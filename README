@@ -1,0 +1,100 @@
+PS3BluMote  -  Copyright (c) 2011 Ben Barron
+
+This application allows you to use the official Sony PS3 Bluetooth remote
+control (and other compatible remotes) within windows. The remote simulates
+a keyboard whereby each button can be assigned one or many keyboard keys.
+When you press a key on the remote, the application simulates the keyboard
+key pressses.
+
+
+=====================
+
+INSTALLATION:
+
+    1. Download and install the PS3BluMote application from: 
+       http://benbarron.com/applications.
+    2. Pair the remote (see instructions below).
+    3. Open the PS3BluMote application. The icon for the application will
+       appear in the system tray. A gray icon means the remote is not
+       connected; blue means connected.
+    4. Right-click on the system tray icon and click "Settings". Here
+       you can change all the settings needed and the key assignments. You
+       can close this window by clicking the "X" in the top right-hand
+       corner. You settings will autoamtically be saved.    
+    5. To exit the application you will need to right-click on the system
+       tray icon and click "Exit".
+
+
+=====================
+
+HOW TO PAIR THE OFFICIAL SONY PS3 BLUETOOTH REMOTE IN WINDOWS:
+
+    1. Bring up the Bluetooth pairing screen on your computer.
+    2. Put the PS3 Bluetooth Remote into pairing mode. To do this you hold 
+      "Start+Enter" buttons for 5 seconds and then release.
+    3. Search for discoverable devices on your computer.
+    4. When the remote is found, pair the device. If prompted for a key, opt
+       for the NO KEY option.
+    5. Allow for the device to pair. Do NOT close the "finished paring screen"
+       for 2 minutes. Hopefully it should install some drivers in the
+       background (see your system tray).
+    6. Open the PS3BluMote application and see if the remote works, pressing
+       any button should pair the remote automatically. If it works you will
+       have a blue icon in your system tray and when you hover over the icon
+       for the application it will popup with "Connected".
+       
+If it does not work, continue with these steps:
+
+    7. Put the remote back into pairing mode (follow instruction 2).
+    8. Open up the services screen for the already paired remote.
+    9. **HOPEFULLY** you should see a checkbox for HID device (or something 
+       similar). Check it and click Apply/Ok and it should install the driver.
+       
+If you are still having issues continue with these steps:
+
+   10. Unplug your PS3 (if you own one).
+   11. Unpair/Remove any PS3 related Bluetooth devices that are paired with
+       your computer.
+   12. Remove the drivers for your PC Bluetooth device/dongle and remove the 
+       actual device itself.
+   13. Look through Device Manager to ensure that all drivers/devices related
+       to Bluetooth have been removed.
+   14. Restart your computer.
+   15. Plug the Bluetooth device/dongle back into your PC and install the 
+       drivers.
+   16. Restart your computer.
+   17. Return to Step 1.
+
+
+=====================
+
+COMPILING:
+
+You can obtain the source code from: https://github.com/Ben-Barron/PS3BluMote.
+
+Simply download and open the solution in Visual Studios (preferably 2010) and
+"Build" (F5).
+
+
+=====================
+
+LICENCE:
+
+Copyright (c) 2011 Ben Barron
+
+Permission is hereby granted, free of charge, to any person obtaining a copy 
+of this software and associated documentation files (the "Software"), to deal 
+in the Software without restriction, including without limitation the rights 
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell 
+copies of the Software, and to permit persons to whom the Software is furnished 
+to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all 
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, 
+INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A 
+PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT 
+HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION 
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE 
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
