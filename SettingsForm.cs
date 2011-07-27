@@ -33,7 +33,7 @@ namespace PS3BluMote
     {
         private readonly String SETTINGS_DIRECTORY = System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData) + "\\PS3BluMote\\";
         private readonly String SETTINGS_FILE = System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData) + "\\PS3BluMote\\settings.ini";
-        private const String SETTINGS_VERSION = "1.1";
+        private const String SETTINGS_VERSION = "2.0";
 
         private List<SendInputAPI.Keyboard.KeyCode>[] buttonMappings = new List<SendInputAPI.Keyboard.KeyCode>[51];
         private PS3Remote remote = null;
@@ -146,7 +146,7 @@ namespace PS3BluMote
                 errorMessage = "Unable to locate the settings file.";
             }
 
-            MessageBox.Show(errorMessage, "PS3BluMote: Settings load error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show(errorMessage + " A fresh settings file has been created.", "PS3BluMote: Settings load error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             
             return false;
         }
