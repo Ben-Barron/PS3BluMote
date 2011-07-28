@@ -61,11 +61,6 @@ namespace PS3BluMote
                 lvKeys.Items.Add(new ListViewItem(key.ToString()));
             }
 
-            if (!loadSettings())
-            {
-                saveSettings();
-            }
-
             try
             {
                 remote = new PS3Remote(int.Parse(txtVendorId.Text.Remove(0, 2), System.Globalization.NumberStyles.HexNumber), int.Parse(txtProductId.Text.Remove(0, 2), System.Globalization.NumberStyles.HexNumber), cbHibernation.Checked);
@@ -82,6 +77,11 @@ namespace PS3BluMote
             }
 
             keyboard = new SendInputAPI.Keyboard(cbSms.Checked);
+
+            if (!loadSettings())
+            {
+                saveSettings();
+            }
         }
 
         private void cbHibernation_CheckedChanged(object sender, EventArgs e)
