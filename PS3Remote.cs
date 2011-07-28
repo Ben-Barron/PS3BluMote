@@ -144,11 +144,7 @@ namespace PS3BluMote
 
             if (InData.Status == HidDeviceData.ReadStatus.Success)
             {
-                byte[] bCode = new byte[4];
-                bCode[0] = InData.Data[1];
-                bCode[1] = InData.Data[2];
-                bCode[2] = InData.Data[3];
-                bCode[3] = InData.Data[4];
+                byte[] bCode = { InData.Data[1], InData.Data[2], InData.Data[3], InData.Data[4] };
 
                 int i, j;
 
