@@ -96,8 +96,8 @@ namespace WindowsAPI
         public class Keyboard
         {
             public bool isSmsEnabled;
+            public List<KeyCode> lastKeysDown;
 
-            private List<KeyCode> lastKeysDown;
             private int lastNumberPress, smsArrayIndex;
             private DateTime lastPressTime;
 
