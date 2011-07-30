@@ -35,23 +35,29 @@ namespace PS3BluMote
         private readonly String SETTINGS_FILE = System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData) + "\\PS3BluMote\\settings.ini";
         private const String SETTINGS_VERSION = "2.0";
 
-        private List<SendInputAPI.Keyboard.KeyCode>[] buttonMappings = new List<SendInputAPI.Keyboard.KeyCode>[51];
+        private ButtonMapping[] buttonMappings = new ButtonMapping[51];
         private PS3Remote remote = null;
         private SendInputAPI.Keyboard keyboard = null;
+        private System.Timers.Timer timerRepeat = null;
 
         public SettingsForm()
         {
             for (int i = 0; i < buttonMappings.Length; i++)
             {
-                buttonMappings[i] = new List<SendInputAPI.Keyboard.KeyCode>();
+                buttonMappings[i] = new ButtonMapping();
             }
 
             InitializeComponent();
 
+            timerRepeat = new System.Timers.Timer();
+            timerRepeat.Interval = 1000;
+            timerRepeat.Elapsed += new System.Timers.ElapsedEventHandler(timerRepeat_Elapsed);
+
             ListViewItem lvItem;
             foreach (PS3Remote.Button button in Enum.GetValues(typeof(PS3Remote.Button)))
             {
-                lvItem = new ListViewItem(button.ToString());
+                lvItem = new ListViewItem();
+                lvItem.SubItems.Add(button.ToString());
                 lvItem.SubItems.Add("");
                 lvButtons.Items.Add(lvItem);
             }
@@ -118,7 +124,9 @@ namespace PS3BluMote
                         foreach (XmlNode buttonNode in rssNode.SelectNodes("mappings/button"))
                         {
                             int index = (int)Enum.Parse(typeof(PS3Remote.Button), buttonNode.Attributes["name"].InnerText, true);
-                            List<SendInputAPI.Keyboard.KeyCode> mappedKeys = buttonMappings[index];
+                            buttonMappings[index].repeat = (buttonNode.Attributes["repeat"].InnerText.ToLower() == "true") ? true : false;
+                            lvButtons.Items[index].Checked = buttonMappings[index].repeat;
+                            List<SendInputAPI.Keyboard.KeyCode> mappedKeys = buttonMappings[index].keysMapped;
 
                             if (buttonNode.InnerText.Length > 0)
                             {
@@ -127,7 +135,7 @@ namespace PS3BluMote
                                     mappedKeys.Add((SendInputAPI.Keyboard.KeyCode)Enum.Parse(typeof(SendInputAPI.Keyboard.KeyCode), keyCode, true));
                                 }
 
-                                lvButtons.Items[index].SubItems[1].Text = buttonNode.InnerText.Replace(",", " + ");
+                                lvButtons.Items[index].SubItems[2].Text = buttonNode.InnerText.Replace(",", " + ");
                             }
                         }
 
@@ -151,14 +159,19 @@ namespace PS3BluMote
             return false;
         }
 
+        private void lvButtons_ItemChecked(object sender, ItemCheckedEventArgs e)
+        {
+            buttonMappings[e.Item.Index].repeat = e.Item.Checked;
+        }
+
         private void lvButtons_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (lvButtons.SelectedItems.Count == 0) return;
 
             lvButtons.Tag = true;
 
-            int index = (int)Enum.Parse(typeof(PS3Remote.Button), lvButtons.SelectedItems[0].SubItems[0].Text, true);
-            List<SendInputAPI.Keyboard.KeyCode> mappedKeys = buttonMappings[index];
+            int index = (int)Enum.Parse(typeof(PS3Remote.Button), lvButtons.SelectedItems[0].SubItems[1].Text, true);
+            List<SendInputAPI.Keyboard.KeyCode> mappedKeys = buttonMappings[index].keysMapped;
 
             foreach (ListViewItem lvItem in lvKeys.Items)
             {
@@ -179,8 +192,8 @@ namespace PS3BluMote
         {
             if ((bool)lvButtons.Tag) return;
 
-            int index = (int)Enum.Parse(typeof(PS3Remote.Button), lvButtons.SelectedItems[0].SubItems[0].Text, true);
-            List<SendInputAPI.Keyboard.KeyCode> mappedKeys = buttonMappings[index];
+            int index = (int)Enum.Parse(typeof(PS3Remote.Button), lvButtons.SelectedItems[0].SubItems[1].Text, true);
+            List<SendInputAPI.Keyboard.KeyCode> mappedKeys = buttonMappings[index].keysMapped;
             SendInputAPI.Keyboard.KeyCode code = (SendInputAPI.Keyboard.KeyCode)Enum.Parse(typeof(SendInputAPI.Keyboard.KeyCode), lvKeys.Items[e.Index].Text, true);
 
             if (e.NewValue == CheckState.Checked && !mappedKeys.Contains(code))
@@ -198,7 +211,7 @@ namespace PS3BluMote
                 text += key.ToString() + " + ";
             }
 
-            lvButtons.SelectedItems[0].SubItems[1].Text = (mappedKeys.Count > 0) ? text.Substring(0, text.Length - 3) : "";
+            lvButtons.SelectedItems[0].SubItems[2].Text = (mappedKeys.Count > 0) ? text.Substring(0, text.Length - 3) : "";
         }
 
         private void menuNotifyIcon_ItemClick(object sender, EventArgs e)
@@ -225,11 +238,27 @@ namespace PS3BluMote
 
         private void remote_ButtonDown(object sender, PS3Remote.ButtonData e)
         {
-            keyboard.sendKeysDown(buttonMappings[(int)e.button]);
+            ButtonMapping mapping = buttonMappings[(int)e.button];
+
+            if (mapping.repeat)
+            {
+                keyboard.sendKeysDown(mapping.keysMapped);
+                keyboard.releaseLastKeys();
+                timerRepeat.Enabled = true;
+                return;
+            }
+            
+            keyboard.sendKeysDown(mapping.keysMapped);
         }
 
         private void remote_ButtonReleased(object sender, PS3Remote.ButtonData e)
         {
+            if (timerRepeat.Enabled)
+            {
+                timerRepeat.Enabled = false;
+                return;
+            }
+
             keyboard.releaseLastKeys();
         }
 
@@ -258,9 +287,10 @@ namespace PS3BluMote
 
             for (int i = 0; i < buttonMappings.Length; i++)
             {
-                text += "\t\t<button name=\"" + ((PS3Remote.Button)i).ToString() + "\">";
+                text += "\t\t<button name=\"" + ((PS3Remote.Button)i).ToString() + "\" repeat=\"" 
+                    + buttonMappings[i].repeat.ToString().ToLower() + "\">";
 
-                foreach (SendInputAPI.Keyboard.KeyCode key in buttonMappings[i])
+                foreach (SendInputAPI.Keyboard.KeyCode key in buttonMappings[i].keysMapped)
                 {
                     text += key.ToString() + ",";
                 }
@@ -308,6 +338,12 @@ namespace PS3BluMote
             lvButtons.Items[0].Selected = true;
         }
 
+        private void timerRepeat_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            keyboard.sendKeysDown(keyboard.lastKeysDown);
+            keyboard.releaseLastKeys();
+        }
+
         private void txtProductId_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
             try
@@ -329,6 +365,18 @@ namespace PS3BluMote
             catch
             {
                 e.Cancel = true;
+            }
+        }
+
+        private class ButtonMapping
+        {
+            public List<SendInputAPI.Keyboard.KeyCode> keysMapped;
+            public bool repeat;
+
+            public ButtonMapping()
+            {
+                keysMapped = new List<SendInputAPI.Keyboard.KeyCode>();
+                repeat = false;
             }
         }
     }

@@ -59,6 +59,7 @@ namespace PS3BluMote
             this.tabMappings = new System.Windows.Forms.TabPage();
             this.splitContainer = new System.Windows.Forms.SplitContainer();
             this.lvButtons = new System.Windows.Forms.ListView();
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lvKeys = new System.Windows.Forms.ListView();
@@ -149,13 +150,15 @@ namespace PS3BluMote
             // 
             this.splitContainer.Panel2.Controls.Add(this.lvKeys);
             this.splitContainer.Size = new System.Drawing.Size(598, 398);
-            this.splitContainer.SplitterDistance = 302;
+            this.splitContainer.SplitterDistance = 331;
             this.splitContainer.SplitterWidth = 6;
             this.splitContainer.TabIndex = 2;
             // 
             // lvButtons
             // 
+            this.lvButtons.CheckBoxes = true;
             this.lvButtons.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader3,
             this.columnHeader1,
             this.columnHeader2});
             this.lvButtons.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -167,19 +170,27 @@ namespace PS3BluMote
             this.lvButtons.MultiSelect = false;
             this.lvButtons.Name = "lvButtons";
             this.lvButtons.ShowGroups = false;
-            this.lvButtons.Size = new System.Drawing.Size(302, 398);
+            this.lvButtons.Size = new System.Drawing.Size(331, 398);
             this.lvButtons.TabIndex = 0;
             this.lvButtons.UseCompatibleStateImageBehavior = false;
             this.lvButtons.View = System.Windows.Forms.View.Details;
+            this.lvButtons.ItemChecked += new System.Windows.Forms.ItemCheckedEventHandler(this.lvButtons_ItemChecked);
             this.lvButtons.SelectedIndexChanged += new System.EventHandler(this.lvButtons_SelectedIndexChanged);
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.DisplayIndex = 2;
+            this.columnHeader3.Text = "Repeat";
             // 
             // columnHeader1
             // 
+            this.columnHeader1.DisplayIndex = 0;
             this.columnHeader1.Text = "Remote button";
             this.columnHeader1.Width = 100;
             // 
             // columnHeader2
             // 
+            this.columnHeader2.DisplayIndex = 1;
             this.columnHeader2.Text = "Keys assigned";
             this.columnHeader2.Width = 150;
             // 
@@ -192,7 +203,7 @@ namespace PS3BluMote
             this.lvKeys.MultiSelect = false;
             this.lvKeys.Name = "lvKeys";
             this.lvKeys.ShowGroups = false;
-            this.lvKeys.Size = new System.Drawing.Size(290, 398);
+            this.lvKeys.Size = new System.Drawing.Size(261, 398);
             this.lvKeys.TabIndex = 1;
             this.lvKeys.UseCompatibleStateImageBehavior = false;
             this.lvKeys.View = System.Windows.Forms.View.List;
@@ -347,5 +358,6 @@ namespace PS3BluMote
         private System.Windows.Forms.CheckBox cbSms;
         private System.Windows.Forms.ToolTip toolTipAdvanced;
         private System.Windows.Forms.Label lblRemoteCodes;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
     }
 }
