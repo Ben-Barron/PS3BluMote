@@ -24,6 +24,7 @@ using System.Collections.Generic;
 using System.Timers;
 
 using HidLibrary;
+using WindowsAPI;
 
 namespace PS3BluMote
 {
@@ -224,7 +225,18 @@ namespace PS3BluMote
 
         private void timerHibernation_Elapsed(object sender, ElapsedEventArgs e)
         {
-            // TODO - disconnect remote and start timerFindRemote.
+            try
+            {
+                HardwareAPI.DisableDevice(n => n.ToUpperInvariant().Contains
+                    ("VID_" + vendorId.ToString("X4") + "&PID_" + productId.ToString("X4")), true);
+
+                HardwareAPI.DisableDevice(n => n.ToUpperInvariant().Contains
+                    ("VID_" + vendorId.ToString("X4") + "&PID_" + productId.ToString("X4")), false);
+            }
+            catch
+            { }
+
+            timerFindRemote.Enabled = true;
         }
 
         public class ButtonData : EventArgs
