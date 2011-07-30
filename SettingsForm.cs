@@ -22,6 +22,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Security.Principal;
 using System.Windows.Forms;
 using System.Xml;
 
@@ -120,6 +121,12 @@ namespace PS3BluMote
                         cbHibernation.Checked = (rssNode.SelectSingleNode("settings/hibernation").InnerText.ToLower() == "true") ? true : false;
                         txtVendorId.Text = rssNode.SelectSingleNode("settings/vendorid").InnerText;
                         txtProductId.Text = rssNode.SelectSingleNode("settings/productid").InnerText;
+                        
+                        if (cbHibernation.Checked &&
+                            !(new WindowsPrincipal(WindowsIdentity.GetCurrent()).IsInRole(WindowsBuiltInRole.Administrator)))
+                        {
+                            MessageBox.Show("Admin rights/UAC are required to use the hibernation feature! Please enable them!", "PS3BluMote: No admin rights found!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        }
 
                         foreach (XmlNode buttonNode in rssNode.SelectNodes("mappings/button"))
                         {
