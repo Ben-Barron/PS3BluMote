@@ -125,7 +125,7 @@ namespace PS3BluMote
                         if (cbHibernation.Checked &&
                             !(new WindowsPrincipal(WindowsIdentity.GetCurrent()).IsInRole(WindowsBuiltInRole.Administrator)))
                         {
-                            MessageBox.Show("Admin rights/UAC are required to use the hibernation feature! Please enable them!", "PS3BluMote: No admin rights found!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            MessageBox.Show("Admin/UAC elevated rights are required to use the hibernation feature! Please enable them!", "PS3BluMote: No admin rights found!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         }
 
                         foreach (XmlNode buttonNode in rssNode.SelectNodes("mappings/button"))

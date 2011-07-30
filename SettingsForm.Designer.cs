@@ -289,9 +289,9 @@ namespace PS3BluMote
             this.cbHibernation.AutoSize = true;
             this.cbHibernation.Location = new System.Drawing.Point(13, 36);
             this.cbHibernation.Name = "cbHibernation";
-            this.cbHibernation.Size = new System.Drawing.Size(349, 17);
+            this.cbHibernation.Size = new System.Drawing.Size(393, 17);
             this.cbHibernation.TabIndex = 1;
-            this.cbHibernation.Text = "Hibernation - to save battery life (**Requires admin/UAC privilidges**)";
+            this.cbHibernation.Text = "Hibernation - to save battery life (**Requires admin/UAC elevated privilidges**)";
             this.cbHibernation.UseVisualStyleBackColor = true;
             this.cbHibernation.CheckedChanged += new System.EventHandler(this.cbHibernation_CheckedChanged);
             // 
