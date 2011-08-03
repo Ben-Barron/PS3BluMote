@@ -73,6 +73,7 @@ namespace PS3BluMote
             this.cbHibernation = new System.Windows.Forms.CheckBox();
             this.cbSms = new System.Windows.Forms.CheckBox();
             this.toolTipAdvanced = new System.Windows.Forms.ToolTip(this.components);
+            this.cbDebugMode = new System.Windows.Forms.CheckBox();
             this.menuNotifyIcon.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.tabMappings.SuspendLayout();
@@ -211,6 +212,7 @@ namespace PS3BluMote
             // 
             // tabSettings
             // 
+            this.tabSettings.Controls.Add(this.cbDebugMode);
             this.tabSettings.Controls.Add(this.gbAdvanced);
             this.tabSettings.Controls.Add(this.cbHibernation);
             this.tabSettings.Controls.Add(this.cbSms);
@@ -229,7 +231,7 @@ namespace PS3BluMote
             this.gbAdvanced.Controls.Add(this.txtProductId);
             this.gbAdvanced.Controls.Add(this.lblVendorId);
             this.gbAdvanced.Controls.Add(this.lblProductId);
-            this.gbAdvanced.Location = new System.Drawing.Point(9, 70);
+            this.gbAdvanced.Location = new System.Drawing.Point(9, 90);
             this.gbAdvanced.Name = "gbAdvanced";
             this.gbAdvanced.Padding = new System.Windows.Forms.Padding(6);
             this.gbAdvanced.Size = new System.Drawing.Size(203, 159);
@@ -289,9 +291,9 @@ namespace PS3BluMote
             this.cbHibernation.AutoSize = true;
             this.cbHibernation.Location = new System.Drawing.Point(13, 36);
             this.cbHibernation.Name = "cbHibernation";
-            this.cbHibernation.Size = new System.Drawing.Size(393, 17);
+            this.cbHibernation.Size = new System.Drawing.Size(388, 17);
             this.cbHibernation.TabIndex = 1;
-            this.cbHibernation.Text = "Hibernation - to save battery life (**Requires admin/UAC elevated privilidges**)";
+            this.cbHibernation.Text = "Hibernation - to save battery life (**requires admin/UAC elevated privilidges**)";
             this.cbHibernation.UseVisualStyleBackColor = true;
             this.cbHibernation.CheckedChanged += new System.EventHandler(this.cbHibernation_CheckedChanged);
             // 
@@ -300,11 +302,22 @@ namespace PS3BluMote
             this.cbSms.AutoSize = true;
             this.cbSms.Location = new System.Drawing.Point(13, 13);
             this.cbSms.Name = "cbSms";
-            this.cbSms.Size = new System.Drawing.Size(100, 17);
+            this.cbSms.Size = new System.Drawing.Size(95, 17);
             this.cbSms.TabIndex = 0;
-            this.cbSms.Text = "SMS Text Input";
+            this.cbSms.Text = "SMS text input";
             this.cbSms.UseVisualStyleBackColor = true;
             this.cbSms.CheckedChanged += new System.EventHandler(this.cbSms_CheckedChanged);
+            // 
+            // cbDebugMode
+            // 
+            this.cbDebugMode.AutoSize = true;
+            this.cbDebugMode.Location = new System.Drawing.Point(13, 59);
+            this.cbDebugMode.Name = "cbDebugMode";
+            this.cbDebugMode.Size = new System.Drawing.Size(171, 17);
+            this.cbDebugMode.TabIndex = 3;
+            this.cbDebugMode.Text = "Debug mode (logging enabled)";
+            this.cbDebugMode.UseVisualStyleBackColor = true;
+            this.cbDebugMode.CheckedChanged += new System.EventHandler(this.cbDebugMode_CheckedChanged);
             // 
             // SettingsForm
             // 
@@ -358,5 +371,6 @@ namespace PS3BluMote
         private System.Windows.Forms.ToolTip toolTipAdvanced;
         private System.Windows.Forms.Label lblRemoteCodes;
         private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.CheckBox cbDebugMode;
     }
 }

@@ -91,6 +91,11 @@ namespace PS3BluMote
             }
         }
 
+        private void cbDebugMode_CheckedChanged(object sender, EventArgs e)
+        {
+            DebugLog.isLogging = cbDebugMode.Checked;
+        }
+
         private void cbHibernation_CheckedChanged(object sender, EventArgs e)
         {
             remote.hibernationEnabled = cbHibernation.Checked;
