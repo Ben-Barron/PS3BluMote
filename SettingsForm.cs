@@ -234,6 +234,8 @@ namespace PS3BluMote
             }
             else if (sender.Equals(mitemExit))
             {
+                if (DebugLog.isLogging) DebugLog.outputToFile(SETTINGS_DIRECTORY + "log.txt");
+
                 Application.Exit();
             }
         }
@@ -246,27 +248,40 @@ namespace PS3BluMote
         private void remote_BatteryLifeChanged(object sender, EventArgs e)
         {
             notifyIcon.Text = "PS3BluMote: Connected + (Battery: " + remote.getBatteryLife.ToString() + "%).";
+
+            if (DebugLog.isLogging) DebugLog.write("Battery life: " + remote.getBatteryLife.ToString());
         }
 
         private void remote_ButtonDown(object sender, PS3Remote.ButtonData e)
         {
+            if (DebugLog.isLogging) DebugLog.write("Button down: " + e.button.ToString());
+
             ButtonMapping mapping = buttonMappings[(int)e.button];
 
             if (mapping.repeat)
             {
                 keyboard.sendKeysDown(mapping.keysMapped);
                 keyboard.releaseLastKeys();
+
+                if (DebugLog.isLogging) DebugLog.write("Keys repeat send: " + mapping.keysMapped.ToArray().ToString());
+
                 timerRepeat.Enabled = true;
                 return;
             }
             
             keyboard.sendKeysDown(mapping.keysMapped);
+
+            if (DebugLog.isLogging) DebugLog.write("Keys down: " + mapping.keysMapped.ToArray().ToString());
         }
 
         private void remote_ButtonReleased(object sender, PS3Remote.ButtonData e)
         {
+            if (DebugLog.isLogging) DebugLog.write("Button released");
+
             if (timerRepeat.Enabled)
             {
+                if (DebugLog.isLogging) DebugLog.write("Keys repeat off");
+
                 timerRepeat.Enabled = false;
                 return;
             }
@@ -276,12 +291,16 @@ namespace PS3BluMote
 
         private void remote_Connected(object sender, EventArgs e)
         {
+            if (DebugLog.isLogging) DebugLog.write("Remote connected");
+
             notifyIcon.Text = "PS3BluMote: Connected + (Battery: " + remote.getBatteryLife.ToString() + "%).";
             notifyIcon.Icon = Properties.Resources.Icon_Connected;
         }
 
         private void remote_Disconnected(object sender, EventArgs e)
         {
+            if (DebugLog.isLogging) DebugLog.write("Remote disconnected");
+
             notifyIcon.Text = "PS3BluMote: Disconnected.";
             notifyIcon.Icon = Properties.Resources.Icon_Disconnected;
         }

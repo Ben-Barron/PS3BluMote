@@ -225,6 +225,8 @@ namespace PS3BluMote
 
         private void timerHibernation_Elapsed(object sender, ElapsedEventArgs e)
         {
+            if (DebugLog.isLogging) DebugLog.write("PS3Remote: attempting to hibernate remote");
+
             try
             {
                 HardwareAPI.DisableDevice(n => n.ToUpperInvariant().Contains
@@ -234,7 +236,9 @@ namespace PS3BluMote
                     ("VID_" + vendorId.ToString("X4") + "&PID_" + productId.ToString("X4")), false);
             }
             catch
-            { }
+            {
+                if (DebugLog.isLogging) DebugLog.write("PS3Remote: unable to hibernate remote");
+            }
 
             timerFindRemote.Enabled = true;
             timerHibernation.Enabled = false;
