@@ -237,6 +237,7 @@ namespace PS3BluMote
             { }
 
             timerFindRemote.Enabled = true;
+            timerHibernation.Enabled = false;
         }
 
         public class ButtonData : EventArgs
