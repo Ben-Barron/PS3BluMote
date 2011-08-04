@@ -230,10 +230,10 @@ namespace PS3BluMote
             try
             {
                 HardwareAPI.DisableDevice(n => n.ToUpperInvariant().Contains
-                    ("VID_" + vendorId.ToString("X4") + "&PID_" + productId.ToString("X4")), true);
+                    ("VID&0002054c_PID&0304"), true);
 
                 HardwareAPI.DisableDevice(n => n.ToUpperInvariant().Contains
-                    ("VID_" + vendorId.ToString("X4") + "&PID_" + productId.ToString("X4")), false);
+                    ("VID&0002054c_PID&0304"), false);
             }
             catch
             {
