@@ -22,6 +22,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 
 namespace PS3BluMote
 {
@@ -41,7 +42,7 @@ namespace PS3BluMote
 
             try
             {
-                file = new StreamWriter(filename);
+                file = new StreamWriter(filename, false, Encoding.UTF8);
 
                 foreach (string line in _log)
                 {
