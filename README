@@ -9,19 +9,22 @@ key pressses.
 
 =====================
 
-INSTALLATION:
+INSTALLATION AND USE:
 
-    1. Download and install the PS3BluMote application from: 
+    1. If it is not installed already, download and install .NET 4.0
+	   framework. This can be downloaded for free here:
+	   http://www.microsoft.com/download/en/details.aspx?id=17851.
+    2. Download and install the PS3BluMote application from: 
        http://benbarron.com/applications.
-    2. Pair the remote (see instructions below).
-    3. Open the PS3BluMote application. The icon for the application will
+    3. Pair the remote (see instructions below).
+    4. Open the PS3BluMote application. The icon for the application will
        appear in the system tray. A gray icon means the remote is not
        connected; blue means connected.
-    4. Right-click on the system tray icon and click "Settings". Here
+    5. Right-click on the system tray icon and click "Settings". Here
        you can change all the settings needed and the key assignments. You
        can close this window by clicking the "X" in the top right-hand
        corner. You settings will autoamtically be saved.    
-    5. To exit the application you will need to right-click on the system
+    6. To exit the application you will need to right-click on the system
        tray icon and click "Exit".
 
 
@@ -29,12 +32,14 @@ INSTALLATION:
 
 HOW TO PAIR THE OFFICIAL SONY PS3 BLUETOOTH REMOTE IN WINDOWS:
 
-    1. Bring up the Bluetooth pairing screen on your computer.
+    1. Bring up the Bluetooth pairing screen on your computer. How you do
+	   this depends entirely on your operating system and what Bluetooth
+	   adapter you are using.
     2. Put the PS3 Bluetooth Remote into pairing mode. To do this you hold 
-      "Start+Enter" buttons for 5 seconds and then release.
+      "Start + Enter" buttons together for 5 seconds and then release.
     3. Search for discoverable devices on your computer.
-    4. When the remote is found, pair the device. If prompted for a key, opt
-       for the NO KEY option.
+    4. When the remote (it is named “BD Remote Control”) is found, pair the
+	   device. If prompted for a key, opt for the NO KEY (or similar) option.
     5. Allow for the device to pair. Do NOT close the "finished paring screen"
        for 2 minutes. Hopefully it should install some drivers in the
        background (see your system tray).
