@@ -321,14 +321,8 @@ namespace PS3BluMote
             for (int i = 0; i < buttonMappings.Length; i++)
             {
                 text += "\t\t<button name=\"" + ((PS3Remote.Button)i).ToString() + "\" repeat=\"" 
-                    + buttonMappings[i].repeat.ToString().ToLower() + "\">";
-
-                foreach (SendInputAPI.Keyboard.KeyCode key in buttonMappings[i].keysMapped)
-                {
-                    text += key.ToString() + ",";
-                }
-
-                text = text.TrimEnd(',') + "</button>\r\n";
+                    + buttonMappings[i].repeat.ToString().ToLower() + "\">"
+                    + String.Join(",", buttonMappings[i].keysMapped.ToArray()) + "</button>\r\n";
             }
 
             text += "\t</mappings>\r\n";
