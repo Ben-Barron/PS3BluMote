@@ -280,13 +280,13 @@ namespace PS3BluMote
 
             if (timerRepeat.Enabled)
             {
-                if (DebugLog.isLogging) DebugLog.write("Keys repeat send off: { " + String.Join(",", keyboard.lastKeysDown.ToArray()) + "}");
+                if (DebugLog.isLogging) DebugLog.write("Keys repeat send off: { " + String.Join(",", keyboard.lastKeysDown.ToArray()) + " }");
 
                 timerRepeat.Enabled = false;
                 return;
             }
 
-            if (DebugLog.isLogging) DebugLog.write("Keys up: { " + String.Join(",", keyboard.lastKeysDown.ToArray()) + "}");
+            if (DebugLog.isLogging) DebugLog.write("Keys up: { " + String.Join(",", keyboard.lastKeysDown.ToArray()) + " }");
 
             keyboard.releaseLastKeys();
         }
