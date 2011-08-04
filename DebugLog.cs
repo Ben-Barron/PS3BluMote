@@ -33,7 +33,7 @@ namespace PS3BluMote
 
         public static void write(string line)
         {
-            _log.Add("[" + DateTime.Now.ToString() + "] :  " + line);
+            _log.Add("[" + DateTime.Now.ToString() + "] :  " + line + ".");
         }
 
         public static void outputToFile(string filename)
