@@ -145,6 +145,8 @@ namespace PS3BluMote
 
             if (InData.Status == HidDeviceData.ReadStatus.Success)
             {
+                if (DebugLog.isLogging) DebugLog.write("Read button data");
+
                 byte[] bCode = { InData.Data[1], InData.Data[2], InData.Data[3], InData.Data[4] };
 
                 int i, j;
@@ -199,12 +201,16 @@ namespace PS3BluMote
         {
             if (hidRemote == null)
             {
+                if (DebugLog.isLogging) DebugLog.write("Searching for remote");
+
                 IEnumerator<HidDevice> devices = HidDevices.Enumerate(vendorId, productId).GetEnumerator();
                 
                 if (devices.MoveNext()) hidRemote = devices.Current;
 
                 if (hidRemote != null)
                 {
+                    if (DebugLog.isLogging) DebugLog.write("Remote found");
+
                     hidRemote.OpenDevice();
 
                     if (Connected != null)
@@ -225,7 +231,7 @@ namespace PS3BluMote
 
         private void timerHibernation_Elapsed(object sender, ElapsedEventArgs e)
         {
-            if (DebugLog.isLogging) DebugLog.write("PS3Remote: attempting to hibernate remote");
+            if (DebugLog.isLogging) DebugLog.write("Attempting to hibernate remote");
 
             try
             {
@@ -237,7 +243,7 @@ namespace PS3BluMote
             }
             catch
             {
-                if (DebugLog.isLogging) DebugLog.write("PS3Remote: unable to hibernate remote");
+                if (DebugLog.isLogging) DebugLog.write("Unable to hibernate remote");
             }
 
             timerFindRemote.Enabled = true;

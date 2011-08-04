@@ -249,7 +249,7 @@ namespace PS3BluMote
         {
             notifyIcon.Text = "PS3BluMote: Connected + (Battery: " + remote.getBatteryLife.ToString() + "%).";
 
-            if (DebugLog.isLogging) DebugLog.write("Battery life: " + remote.getBatteryLife.ToString());
+            if (DebugLog.isLogging) DebugLog.write("Battery life: " + remote.getBatteryLife.ToString() + "%");
         }
 
         private void remote_ButtonDown(object sender, PS3Remote.ButtonData e)
@@ -263,7 +263,7 @@ namespace PS3BluMote
                 keyboard.sendKeysDown(mapping.keysMapped);
                 keyboard.releaseLastKeys();
 
-                if (DebugLog.isLogging) DebugLog.write("Keys repeat send: " + mapping.keysMapped.ToArray().ToString());
+                if (DebugLog.isLogging) DebugLog.write("Keys repeat send on : { " + String.Join(",", mapping.keysMapped.ToArray()) + " }");
 
                 timerRepeat.Enabled = true;
                 return;
@@ -271,20 +271,22 @@ namespace PS3BluMote
             
             keyboard.sendKeysDown(mapping.keysMapped);
 
-            if (DebugLog.isLogging) DebugLog.write("Keys down: " + mapping.keysMapped.ToArray().ToString());
+            if (DebugLog.isLogging) DebugLog.write("Keys down: { " + String.Join(",", mapping.keysMapped.ToArray()) + " }");
         }
 
         private void remote_ButtonReleased(object sender, PS3Remote.ButtonData e)
         {
-            if (DebugLog.isLogging) DebugLog.write("Button released");
+            if (DebugLog.isLogging) DebugLog.write("Button released: " + e.button.ToString());
 
             if (timerRepeat.Enabled)
             {
-                if (DebugLog.isLogging) DebugLog.write("Keys repeat off");
+                if (DebugLog.isLogging) DebugLog.write("Keys repeat send off: { " + String.Join(",", keyboard.lastKeysDown.ToArray()) + "}");
 
                 timerRepeat.Enabled = false;
                 return;
             }
+
+            if (DebugLog.isLogging) DebugLog.write("Keys up: { " + String.Join(",", keyboard.lastKeysDown.ToArray()) + "}");
 
             keyboard.releaseLastKeys();
         }
