@@ -106,6 +106,14 @@ namespace PS3BluMote
             keyboard.isSmsEnabled = cbSms.Checked;
         }
 
+        private void llblOpenFolder_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process prc = new System.Diagnostics.Process();
+            prc.StartInfo.FileName = "explorer.exe";
+            prc.StartInfo.Arguments = SETTINGS_DIRECTORY;
+            prc.Start();
+        }
+
         private bool loadSettings()
         {
             String errorMessage;

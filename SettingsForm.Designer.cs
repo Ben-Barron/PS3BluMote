@@ -64,6 +64,7 @@ namespace PS3BluMote
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lvKeys = new System.Windows.Forms.ListView();
             this.tabSettings = new System.Windows.Forms.TabPage();
+            this.cbDebugMode = new System.Windows.Forms.CheckBox();
             this.gbAdvanced = new System.Windows.Forms.GroupBox();
             this.lblRemoteCodes = new System.Windows.Forms.Label();
             this.txtVendorId = new System.Windows.Forms.TextBox();
@@ -73,7 +74,7 @@ namespace PS3BluMote
             this.cbHibernation = new System.Windows.Forms.CheckBox();
             this.cbSms = new System.Windows.Forms.CheckBox();
             this.toolTipAdvanced = new System.Windows.Forms.ToolTip(this.components);
-            this.cbDebugMode = new System.Windows.Forms.CheckBox();
+            this.llblOpenFolder = new System.Windows.Forms.LinkLabel();
             this.menuNotifyIcon.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.tabMappings.SuspendLayout();
@@ -212,6 +213,7 @@ namespace PS3BluMote
             // 
             // tabSettings
             // 
+            this.tabSettings.Controls.Add(this.llblOpenFolder);
             this.tabSettings.Controls.Add(this.cbDebugMode);
             this.tabSettings.Controls.Add(this.gbAdvanced);
             this.tabSettings.Controls.Add(this.cbHibernation);
@@ -223,6 +225,17 @@ namespace PS3BluMote
             this.tabSettings.TabIndex = 1;
             this.tabSettings.Text = "Settings";
             this.tabSettings.UseVisualStyleBackColor = true;
+            // 
+            // cbDebugMode
+            // 
+            this.cbDebugMode.AutoSize = true;
+            this.cbDebugMode.Location = new System.Drawing.Point(13, 59);
+            this.cbDebugMode.Name = "cbDebugMode";
+            this.cbDebugMode.Size = new System.Drawing.Size(171, 17);
+            this.cbDebugMode.TabIndex = 3;
+            this.cbDebugMode.Text = "Debug mode (logging enabled)";
+            this.cbDebugMode.UseVisualStyleBackColor = true;
+            this.cbDebugMode.CheckedChanged += new System.EventHandler(this.cbDebugMode_CheckedChanged);
             // 
             // gbAdvanced
             // 
@@ -308,16 +321,18 @@ namespace PS3BluMote
             this.cbSms.UseVisualStyleBackColor = true;
             this.cbSms.CheckedChanged += new System.EventHandler(this.cbSms_CheckedChanged);
             // 
-            // cbDebugMode
+            // llblOpenFolder
             // 
-            this.cbDebugMode.AutoSize = true;
-            this.cbDebugMode.Location = new System.Drawing.Point(13, 59);
-            this.cbDebugMode.Name = "cbDebugMode";
-            this.cbDebugMode.Size = new System.Drawing.Size(171, 17);
-            this.cbDebugMode.TabIndex = 3;
-            this.cbDebugMode.Text = "Debug mode (logging enabled)";
-            this.cbDebugMode.UseVisualStyleBackColor = true;
-            this.cbDebugMode.CheckedChanged += new System.EventHandler(this.cbDebugMode_CheckedChanged);
+            this.llblOpenFolder.AutoSize = true;
+            this.llblOpenFolder.Location = new System.Drawing.Point(190, 60);
+            this.llblOpenFolder.Name = "llblOpenFolder";
+            this.llblOpenFolder.Size = new System.Drawing.Size(120, 13);
+            this.llblOpenFolder.TabIndex = 4;
+            this.llblOpenFolder.TabStop = true;
+            this.llblOpenFolder.Text = "Open log/settings folder";
+            this.llblOpenFolder.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.llblOpenFolder.VisitedLinkColor = System.Drawing.Color.Blue;
+            this.llblOpenFolder.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblOpenFolder_LinkClicked);
             // 
             // SettingsForm
             // 
@@ -372,5 +387,6 @@ namespace PS3BluMote
         private System.Windows.Forms.Label lblRemoteCodes;
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.CheckBox cbDebugMode;
+        private System.Windows.Forms.LinkLabel llblOpenFolder;
     }
 }
