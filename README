@@ -1,10 +1,12 @@
 PS3BluMote  -  Copyright (c) 2011 Ben Barron
 
+(Formally named "PS3 Remote Application")
+
 This application allows you to use the official Sony PS3 Bluetooth remote
 control (and other compatible remotes) within windows. The remote simulates
 a keyboard whereby each button can be assigned one or many keyboard keys.
 When you press a key on the remote, the application simulates the keyboard
-key pressses.
+key presses.
 
 
 =====================
@@ -18,12 +20,12 @@ INSTALLATION AND USE:
        http://benbarron.com/applications.
     3. Pair the remote (see instructions below).
     4. Open the PS3BluMote application. The icon for the application will
-       appear in the system tray. A gray icon means the remote is not
+       appear in the system tray. A grey icon means the remote is not
        connected; blue means connected.
     5. Right-click on the system tray icon and click "Settings". Here
        you can change all the settings needed and the key assignments. You
        can close this window by clicking the "X" in the top right-hand
-       corner. You settings will autoamtically be saved.    
+       corner. You settings will automtically be saved.    
     6. To exit the application you will need to right-click on the system
        tray icon and click "Exit".
 
@@ -46,7 +48,7 @@ HOW TO PAIR THE OFFICIAL SONY PS3 BLUETOOTH REMOTE IN WINDOWS:
     6. Open the PS3BluMote application and see if the remote works, pressing
        any button should pair the remote automatically. If it works you will
        have a blue icon in your system tray and when you hover over the icon
-       for the application it will popup with "Connected".
+       for the application it will pop-up with "Connected".
        
 If it does not work, continue with these steps:
 
