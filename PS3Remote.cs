@@ -21,6 +21,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Timers;
 
 using HidLibrary;
@@ -236,10 +237,12 @@ namespace PS3BluMote
             try
             {
                 HardwareAPI.DisableDevice(n => n.ToUpperInvariant().Contains
-                    ("_VID&0002054c_PID&0304"), true);
+                    ("_VID&0002054C_PID&0306"), true);
+
+                Thread.Sleep(500);
 
                 HardwareAPI.DisableDevice(n => n.ToUpperInvariant().Contains
-                    ("_VID&0002054c_PID&0304"), false);
+                    ("_VID&0002054C_PID&0306"), false);
             }
             catch
             {
