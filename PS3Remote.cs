@@ -42,6 +42,7 @@ namespace PS3BluMote
         private int vendorId = 0x054c;
         private int productId = 0x0306;
         private Button lastButton = Button.Angle;
+        private bool isButtonDown = false;
         private bool _hibernationEnabled;
 
         private byte _batteryLife = 100;
@@ -143,33 +144,39 @@ namespace PS3BluMote
         {
             timerHibernation.Enabled = false;
 
-            if (InData.Status == HidDeviceData.ReadStatus.Success)
+            if ((InData.Status == HidDeviceData.ReadStatus.Success) && (InData.Data[0] == 1))
             {
-                if (DebugLog.isLogging) DebugLog.write("Read button data");
+                if (DebugLog.isLogging) DebugLog.write("Read button data: " + String.Join(",", InData.Data));
 
-                byte[] bCode = { InData.Data[1], InData.Data[2], InData.Data[3], InData.Data[4] };
-
-                int i, j;
-
-                for (j = 0; j < 51; j++)
+                if ((InData.Data[10] == 0) || (InData.Data[4] == 255)) // button released
                 {
-                    for (i = 0; i < 4; i++)
+                    if (ButtonReleased != null && isButtonDown) ButtonReleased(this, new ButtonData(lastButton));
+                }
+                else // button pressed
+                {
+                    byte[] bCode = { InData.Data[1], InData.Data[2], InData.Data[3], InData.Data[4] };
+
+                    int i, j;
+
+                    for (j = 0; j < 51; j++)
                     {
-                        if (bCode[i] != buttonCodes[j][i]) break;
+                        for (i = 0; i < 4; i++)
+                        {
+                            if (bCode[i] != buttonCodes[j][i]) break;
+                        }
+
+                        if (i == 4) break;
                     }
 
-                    if (i == 4) break;
-                }
+                    if (j != 51)
+                    {
+                        lastButton = (Button)j;
+                        isButtonDown = true;
 
-                if (j != 51)
-                {
-                    lastButton = (Button)j;
+                        if (DebugLog.isLogging) DebugLog.write(lastButton.ToString() + ": " + String.Join(",", InData.Data));
 
-                    if (ButtonDown != null) ButtonDown(this, new ButtonData(lastButton));
-                }
-                else
-                {
-                    if (ButtonReleased != null) ButtonReleased(this, new ButtonData(lastButton));
+                        if (ButtonDown != null) ButtonDown(this, new ButtonData(lastButton));
+                    }                   
                 }
 
                 byte batteryReading = (byte)(InData.Data[11] * 20);
@@ -180,21 +187,23 @@ namespace PS3BluMote
 
                     if (BatteryLifeChanged != null) BatteryLifeChanged(this, new EventArgs());
                 }
-
+                
                 if (_hibernationEnabled) timerHibernation.Enabled = true;
 
                 hidRemote.Read(readButtonData); //Read next button pressed.
+
+                return;
             }
-            else
-            {
-                if (Disconnected != null) Disconnected(this, new EventArgs());
 
-                hidRemote.Dispose(); //Dispose of current remote.
+            if (DebugLog.isLogging) DebugLog.write("Read remote data: " + String.Join(",", InData.Data));
 
-                hidRemote = null;
+            if (Disconnected != null) Disconnected(this, new EventArgs());
 
-                timerFindRemote.Enabled = true; //Try to reconnect.
-            }
+            hidRemote.Dispose(); //Dispose of current remote.
+
+            hidRemote = null;
+
+            timerFindRemote.Enabled = true; //Try to reconnect.
         }
 
         private void timerFindRemote_Elapsed(object sender, ElapsedEventArgs e)
