@@ -250,9 +250,9 @@ namespace PS3BluMote
                 HardwareAPI.DisableDevice(n => n.ToUpperInvariant().Contains
                     ("_VID&0002054C_PID&0306"), false);
             }
-            catch
+            catch (Exception ex)
             {
-                if (DebugLog.isLogging) DebugLog.write("Unable to hibernate remote");
+                if (DebugLog.isLogging) DebugLog.write("Unable to hibernate remote:" + ex.Message);
             }
 
             timerFindRemote.Enabled = true;
