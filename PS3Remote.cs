@@ -173,8 +173,6 @@ namespace PS3BluMote
                         lastButton = (Button)j;
                         isButtonDown = true;
 
-                        if (DebugLog.isLogging) DebugLog.write(lastButton.ToString() + ": " + String.Join(",", InData.Data));
-
                         if (ButtonDown != null) ButtonDown(this, new ButtonData(lastButton));
                     }                   
                 }
