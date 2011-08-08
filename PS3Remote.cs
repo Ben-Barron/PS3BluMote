@@ -238,14 +238,14 @@ namespace PS3BluMote
 
         private void timerHibernation_Elapsed(object sender, ElapsedEventArgs e)
         {
-            if (DebugLog.isLogging) DebugLog.write("Attempting to hibernate remote");
+            /*if (DebugLog.isLogging) DebugLog.write("Attempting to hibernate remote");
 
             try
             {
                 HardwareAPI.DisableDevice(n => n.ToUpperInvariant().Contains
                     ("_VID&0002054C_PID&0306"), true);
 
-                System.Threading.Thread.Sleep(500);
+                System.Threading.Thread.Sleep(1500);
 
                 HardwareAPI.DisableDevice(n => n.ToUpperInvariant().Contains
                     ("_VID&0002054C_PID&0306"), false);
@@ -255,7 +255,7 @@ namespace PS3BluMote
                 if (DebugLog.isLogging) DebugLog.write("Unable to hibernate remote:" + ex.Message);
             }
 
-            timerFindRemote.Enabled = true;
+            timerFindRemote.Enabled = true;*/
             timerHibernation.Enabled = false;
         }
 
