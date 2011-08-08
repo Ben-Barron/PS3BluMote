@@ -64,6 +64,7 @@ namespace PS3BluMote
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lvKeys = new System.Windows.Forms.ListView();
             this.tabSettings = new System.Windows.Forms.TabPage();
+            this.llblOpenFolder = new System.Windows.Forms.LinkLabel();
             this.cbDebugMode = new System.Windows.Forms.CheckBox();
             this.gbAdvanced = new System.Windows.Forms.GroupBox();
             this.lblRemoteCodes = new System.Windows.Forms.Label();
@@ -74,7 +75,7 @@ namespace PS3BluMote
             this.cbHibernation = new System.Windows.Forms.CheckBox();
             this.cbSms = new System.Windows.Forms.CheckBox();
             this.toolTipAdvanced = new System.Windows.Forms.ToolTip(this.components);
-            this.llblOpenFolder = new System.Windows.Forms.LinkLabel();
+            this.lblCopyright = new System.Windows.Forms.Label();
             this.menuNotifyIcon.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.tabMappings.SuspendLayout();
@@ -213,6 +214,7 @@ namespace PS3BluMote
             // 
             // tabSettings
             // 
+            this.tabSettings.Controls.Add(this.lblCopyright);
             this.tabSettings.Controls.Add(this.llblOpenFolder);
             this.tabSettings.Controls.Add(this.cbDebugMode);
             this.tabSettings.Controls.Add(this.gbAdvanced);
@@ -225,6 +227,19 @@ namespace PS3BluMote
             this.tabSettings.TabIndex = 1;
             this.tabSettings.Text = "Settings";
             this.tabSettings.UseVisualStyleBackColor = true;
+            // 
+            // llblOpenFolder
+            // 
+            this.llblOpenFolder.AutoSize = true;
+            this.llblOpenFolder.Location = new System.Drawing.Point(190, 60);
+            this.llblOpenFolder.Name = "llblOpenFolder";
+            this.llblOpenFolder.Size = new System.Drawing.Size(120, 13);
+            this.llblOpenFolder.TabIndex = 4;
+            this.llblOpenFolder.TabStop = true;
+            this.llblOpenFolder.Text = "Open log/settings folder";
+            this.llblOpenFolder.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.llblOpenFolder.VisitedLinkColor = System.Drawing.Color.Blue;
+            this.llblOpenFolder.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblOpenFolder_LinkClicked);
             // 
             // cbDebugMode
             // 
@@ -321,18 +336,14 @@ namespace PS3BluMote
             this.cbSms.UseVisualStyleBackColor = true;
             this.cbSms.CheckedChanged += new System.EventHandler(this.cbSms_CheckedChanged);
             // 
-            // llblOpenFolder
+            // lblCopyright
             // 
-            this.llblOpenFolder.AutoSize = true;
-            this.llblOpenFolder.Location = new System.Drawing.Point(190, 60);
-            this.llblOpenFolder.Name = "llblOpenFolder";
-            this.llblOpenFolder.Size = new System.Drawing.Size(120, 13);
-            this.llblOpenFolder.TabIndex = 4;
-            this.llblOpenFolder.TabStop = true;
-            this.llblOpenFolder.Text = "Open log/settings folder";
-            this.llblOpenFolder.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.llblOpenFolder.VisitedLinkColor = System.Drawing.Color.Blue;
-            this.llblOpenFolder.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblOpenFolder_LinkClicked);
+            this.lblCopyright.AutoSize = true;
+            this.lblCopyright.Location = new System.Drawing.Point(10, 261);
+            this.lblCopyright.Name = "lblCopyright";
+            this.lblCopyright.Size = new System.Drawing.Size(149, 26);
+            this.lblCopyright.TabIndex = 5;
+            this.lblCopyright.Text = "PS3BluMote v2.0.\r\nCopyright © Ben Barron 2011.";
             // 
             // SettingsForm
             // 
@@ -388,5 +399,6 @@ namespace PS3BluMote
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.CheckBox cbDebugMode;
         private System.Windows.Forms.LinkLabel llblOpenFolder;
+        private System.Windows.Forms.Label lblCopyright;
     }
 }
