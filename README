@@ -25,7 +25,7 @@ INSTALLATION AND USE:
     5. Right-click on the system tray icon and click "Settings". Here
        you can change all the settings needed and the key assignments. You
        can close this window by clicking the "X" in the top right-hand
-       corner. You settings will automtically be saved.    
+       corner. You settings will automatically be saved.    
     6. To exit the application you will need to right-click on the system
        tray icon and click "Exit".
 
@@ -60,7 +60,7 @@ If it does not work, continue with these steps:
 If you are still having issues continue with these steps:
 
    10. Unplug your PS3 (if you own one).
-   11. Unpair/Remove any PS3 related Bluetooth devices that are paired with
+   11. Un-pair/Remove any PS3 related Bluetooth devices that are paired with
        your computer.
    12. Remove the drivers for your PC Bluetooth device/dongle and remove the 
        actual device itself.
