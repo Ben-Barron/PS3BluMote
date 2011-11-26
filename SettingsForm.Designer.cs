@@ -64,6 +64,7 @@ namespace PS3BluMote
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lvKeys = new System.Windows.Forms.ListView();
             this.tabSettings = new System.Windows.Forms.TabPage();
+            this.lblCopyright = new System.Windows.Forms.Label();
             this.llblOpenFolder = new System.Windows.Forms.LinkLabel();
             this.cbDebugMode = new System.Windows.Forms.CheckBox();
             this.gbAdvanced = new System.Windows.Forms.GroupBox();
@@ -75,7 +76,6 @@ namespace PS3BluMote
             this.cbHibernation = new System.Windows.Forms.CheckBox();
             this.cbSms = new System.Windows.Forms.CheckBox();
             this.toolTipAdvanced = new System.Windows.Forms.ToolTip(this.components);
-            this.lblCopyright = new System.Windows.Forms.Label();
             this.menuNotifyIcon.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.tabMappings.SuspendLayout();
@@ -228,6 +228,15 @@ namespace PS3BluMote
             this.tabSettings.Text = "Settings";
             this.tabSettings.UseVisualStyleBackColor = true;
             // 
+            // lblCopyright
+            // 
+            this.lblCopyright.AutoSize = true;
+            this.lblCopyright.Location = new System.Drawing.Point(10, 261);
+            this.lblCopyright.Name = "lblCopyright";
+            this.lblCopyright.Size = new System.Drawing.Size(149, 26);
+            this.lblCopyright.TabIndex = 5;
+            this.lblCopyright.Text = "PS3BluMote v2.0.\r\nCopyright © Ben Barron 2011.";
+            // 
             // llblOpenFolder
             // 
             this.llblOpenFolder.AutoSize = true;
@@ -317,11 +326,13 @@ namespace PS3BluMote
             // cbHibernation
             // 
             this.cbHibernation.AutoSize = true;
+            this.cbHibernation.Enabled = false;
             this.cbHibernation.Location = new System.Drawing.Point(13, 36);
             this.cbHibernation.Name = "cbHibernation";
-            this.cbHibernation.Size = new System.Drawing.Size(388, 17);
+            this.cbHibernation.Size = new System.Drawing.Size(529, 17);
             this.cbHibernation.TabIndex = 1;
-            this.cbHibernation.Text = "Hibernation - to save battery life (**requires admin/UAC elevated privilidges**)";
+            this.cbHibernation.Text = "Hibernation - to save battery life (**requires admin/UAC elevated privilidges**) " +
+                "- FEATURE NOT WORKING";
             this.cbHibernation.UseVisualStyleBackColor = true;
             this.cbHibernation.CheckedChanged += new System.EventHandler(this.cbHibernation_CheckedChanged);
             // 
@@ -335,15 +346,6 @@ namespace PS3BluMote
             this.cbSms.Text = "SMS text input";
             this.cbSms.UseVisualStyleBackColor = true;
             this.cbSms.CheckedChanged += new System.EventHandler(this.cbSms_CheckedChanged);
-            // 
-            // lblCopyright
-            // 
-            this.lblCopyright.AutoSize = true;
-            this.lblCopyright.Location = new System.Drawing.Point(10, 261);
-            this.lblCopyright.Name = "lblCopyright";
-            this.lblCopyright.Size = new System.Drawing.Size(149, 26);
-            this.lblCopyright.TabIndex = 5;
-            this.lblCopyright.Text = "PS3BluMote v2.0.\r\nCopyright © Ben Barron 2011.";
             // 
             // SettingsForm
             // 
