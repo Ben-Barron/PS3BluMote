@@ -76,6 +76,8 @@ namespace PS3BluMote
             this.cbHibernation = new System.Windows.Forms.CheckBox();
             this.cbSms = new System.Windows.Forms.CheckBox();
             this.toolTipAdvanced = new System.Windows.Forms.ToolTip(this.components);
+            this.txtRepeatInterval = new System.Windows.Forms.TextBox();
+            this.lblRepeatInterval = new System.Windows.Forms.Label();
             this.menuNotifyIcon.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.tabMappings.SuspendLayout();
@@ -214,6 +216,8 @@ namespace PS3BluMote
             // 
             // tabSettings
             // 
+            this.tabSettings.Controls.Add(this.txtRepeatInterval);
+            this.tabSettings.Controls.Add(this.lblRepeatInterval);
             this.tabSettings.Controls.Add(this.lblCopyright);
             this.tabSettings.Controls.Add(this.llblOpenFolder);
             this.tabSettings.Controls.Add(this.cbDebugMode);
@@ -231,11 +235,11 @@ namespace PS3BluMote
             // lblCopyright
             // 
             this.lblCopyright.AutoSize = true;
-            this.lblCopyright.Location = new System.Drawing.Point(10, 261);
+            this.lblCopyright.Location = new System.Drawing.Point(10, 298);
             this.lblCopyright.Name = "lblCopyright";
             this.lblCopyright.Size = new System.Drawing.Size(149, 26);
             this.lblCopyright.TabIndex = 5;
-            this.lblCopyright.Text = "PS3BluMote v2.0.\r\nCopyright © Ben Barron 2011.";
+            this.lblCopyright.Text = "PS3BluMote v2.01.\r\nCopyright © Ben Barron 2011.";
             // 
             // llblOpenFolder
             // 
@@ -268,7 +272,7 @@ namespace PS3BluMote
             this.gbAdvanced.Controls.Add(this.txtProductId);
             this.gbAdvanced.Controls.Add(this.lblVendorId);
             this.gbAdvanced.Controls.Add(this.lblProductId);
-            this.gbAdvanced.Location = new System.Drawing.Point(9, 90);
+            this.gbAdvanced.Location = new System.Drawing.Point(9, 127);
             this.gbAdvanced.Name = "gbAdvanced";
             this.gbAdvanced.Padding = new System.Windows.Forms.Padding(6);
             this.gbAdvanced.Size = new System.Drawing.Size(203, 159);
@@ -347,6 +351,24 @@ namespace PS3BluMote
             this.cbSms.UseVisualStyleBackColor = true;
             this.cbSms.CheckedChanged += new System.EventHandler(this.cbSms_CheckedChanged);
             // 
+            // txtRepeatInterval
+            // 
+            this.txtRepeatInterval.Location = new System.Drawing.Point(127, 86);
+            this.txtRepeatInterval.Name = "txtRepeatInterval";
+            this.txtRepeatInterval.Size = new System.Drawing.Size(95, 20);
+            this.txtRepeatInterval.TabIndex = 7;
+            this.txtRepeatInterval.Text = "500";
+            this.txtRepeatInterval.Validating += new System.ComponentModel.CancelEventHandler(this.txtRepeatInterval_Validating);
+            // 
+            // lblRepeatInterval
+            // 
+            this.lblRepeatInterval.AutoSize = true;
+            this.lblRepeatInterval.Location = new System.Drawing.Point(10, 89);
+            this.lblRepeatInterval.Name = "lblRepeatInterval";
+            this.lblRepeatInterval.Size = new System.Drawing.Size(111, 13);
+            this.lblRepeatInterval.TabIndex = 6;
+            this.lblRepeatInterval.Text = "Button repeat interval:";
+            // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -402,5 +424,7 @@ namespace PS3BluMote
         private System.Windows.Forms.CheckBox cbDebugMode;
         private System.Windows.Forms.LinkLabel llblOpenFolder;
         private System.Windows.Forms.Label lblCopyright;
+        private System.Windows.Forms.TextBox txtRepeatInterval;
+        private System.Windows.Forms.Label lblRepeatInterval;
     }
 }

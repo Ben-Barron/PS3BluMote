@@ -50,10 +50,6 @@ namespace PS3BluMote
 
             InitializeComponent();
 
-            timerRepeat = new System.Timers.Timer();
-            timerRepeat.Interval = 500;
-            timerRepeat.Elapsed += new System.Timers.ElapsedEventHandler(timerRepeat_Elapsed);
-
             ListViewItem lvItem;
             foreach (PS3Remote.Button button in Enum.GetValues(typeof(PS3Remote.Button)))
             {
@@ -67,6 +63,15 @@ namespace PS3BluMote
             {
                 lvKeys.Items.Add(new ListViewItem(key.ToString()));
             }
+
+            if (!loadSettings())
+            {
+                saveSettings();
+            }
+
+            timerRepeat = new System.Timers.Timer();
+            timerRepeat.Interval = int.Parse(txtRepeatInterval.Text);
+            timerRepeat.Elapsed += new System.Timers.ElapsedEventHandler(timerRepeat_Elapsed);
 
             try
             {
@@ -84,11 +89,6 @@ namespace PS3BluMote
             }
 
             keyboard = new SendInputAPI.Keyboard(cbSms.Checked);
-
-            if (!loadSettings())
-            {
-                saveSettings();
-            }
         }
 
         private void cbDebugMode_CheckedChanged(object sender, EventArgs e)
@@ -134,6 +134,13 @@ namespace PS3BluMote
                         cbHibernation.Checked = (rssNode.SelectSingleNode("settings/hibernation").InnerText.ToLower() == "true") ? true : false;
                         txtVendorId.Text = rssNode.SelectSingleNode("settings/vendorid").InnerText;
                         txtProductId.Text = rssNode.SelectSingleNode("settings/productid").InnerText;
+
+                        try
+                        {
+                            txtRepeatInterval.Text = rssNode.SelectSingleNode("settings/repeatinterval").InnerText;
+                        }
+                        catch
+                        { }
                         
                         if (cbHibernation.Checked &&
                             !(new WindowsPrincipal(WindowsIdentity.GetCurrent()).IsInRole(WindowsBuiltInRole.Administrator)))
@@ -323,6 +330,7 @@ namespace PS3BluMote
             text += "\t\t<productid>" + txtProductId.Text.ToLower() + "</productid>\r\n";
             text += "\t\t<smsinput>" + cbSms.Checked.ToString().ToLower() + "</smsinput>\r\n";
             text += "\t\t<hibernation>" + cbHibernation.Checked.ToString().ToLower() + "</hibernation>\r\n";
+            text += "\t\t<repeatinterval>" + txtRepeatInterval.Text + "</repeatinterval>\r\n";
             text += "\t</settings>\r\n";
             text += "\t<mappings>\r\n";
 
@@ -388,6 +396,18 @@ namespace PS3BluMote
             catch
             {
                 e.Cancel = true;   
+            }
+        }
+
+        private void txtRepeatInterval_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            try
+            {
+                int i = int.Parse(txtRepeatInterval.Text);
+            }
+            catch
+            {
+                e.Cancel = true;
             }
         }
 
