@@ -51,7 +51,7 @@ namespace PS3BluMote
             InitializeComponent();
 
             timerRepeat = new System.Timers.Timer();
-            timerRepeat.Interval = 1000;
+            timerRepeat.Interval = 500;
             timerRepeat.Elapsed += new System.Timers.ElapsedEventHandler(timerRepeat_Elapsed);
 
             ListViewItem lvItem;
