@@ -1,3 +1,11 @@
+==  PS3BluMote v2.01  ==  30/11/2011 - 17:52  ==  Ben Barron  ==
+
+   * Version 2.01 officially released. Now includes the ability to set the
+     button repeat interval (how often the keys mapped to a button are repeated
+     when the remote button is held).
+
+
+
 ==  PS3BluMote v2.0  ==  26/11/2011 - 14:15  ==  Ben Barron  ==
 
    * Version 2.0 officially released. The hibernation feature has been disabled
