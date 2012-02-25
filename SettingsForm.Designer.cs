@@ -64,6 +64,8 @@ namespace PS3BluMote
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lvKeys = new System.Windows.Forms.ListView();
             this.tabSettings = new System.Windows.Forms.TabPage();
+            this.txtRepeatInterval = new System.Windows.Forms.TextBox();
+            this.lblRepeatInterval = new System.Windows.Forms.Label();
             this.lblCopyright = new System.Windows.Forms.Label();
             this.llblOpenFolder = new System.Windows.Forms.LinkLabel();
             this.cbDebugMode = new System.Windows.Forms.CheckBox();
@@ -76,8 +78,6 @@ namespace PS3BluMote
             this.cbHibernation = new System.Windows.Forms.CheckBox();
             this.cbSms = new System.Windows.Forms.CheckBox();
             this.toolTipAdvanced = new System.Windows.Forms.ToolTip(this.components);
-            this.txtRepeatInterval = new System.Windows.Forms.TextBox();
-            this.lblRepeatInterval = new System.Windows.Forms.Label();
             this.menuNotifyIcon.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.tabMappings.SuspendLayout();
@@ -232,6 +232,24 @@ namespace PS3BluMote
             this.tabSettings.Text = "Settings";
             this.tabSettings.UseVisualStyleBackColor = true;
             // 
+            // txtRepeatInterval
+            // 
+            this.txtRepeatInterval.Location = new System.Drawing.Point(127, 86);
+            this.txtRepeatInterval.Name = "txtRepeatInterval";
+            this.txtRepeatInterval.Size = new System.Drawing.Size(95, 20);
+            this.txtRepeatInterval.TabIndex = 7;
+            this.txtRepeatInterval.Text = "500";
+            this.txtRepeatInterval.Validating += new System.ComponentModel.CancelEventHandler(this.txtRepeatInterval_Validating);
+            // 
+            // lblRepeatInterval
+            // 
+            this.lblRepeatInterval.AutoSize = true;
+            this.lblRepeatInterval.Location = new System.Drawing.Point(10, 89);
+            this.lblRepeatInterval.Name = "lblRepeatInterval";
+            this.lblRepeatInterval.Size = new System.Drawing.Size(111, 13);
+            this.lblRepeatInterval.TabIndex = 6;
+            this.lblRepeatInterval.Text = "Button repeat interval:";
+            // 
             // lblCopyright
             // 
             this.lblCopyright.AutoSize = true;
@@ -239,7 +257,7 @@ namespace PS3BluMote
             this.lblCopyright.Name = "lblCopyright";
             this.lblCopyright.Size = new System.Drawing.Size(149, 26);
             this.lblCopyright.TabIndex = 5;
-            this.lblCopyright.Text = "PS3BluMote v2.01.\r\nCopyright © Ben Barron 2011.";
+            this.lblCopyright.Text = "PS3BluMote v2.02.\r\nCopyright © Ben Barron 2012.";
             // 
             // llblOpenFolder
             // 
@@ -350,24 +368,6 @@ namespace PS3BluMote
             this.cbSms.Text = "SMS text input";
             this.cbSms.UseVisualStyleBackColor = true;
             this.cbSms.CheckedChanged += new System.EventHandler(this.cbSms_CheckedChanged);
-            // 
-            // txtRepeatInterval
-            // 
-            this.txtRepeatInterval.Location = new System.Drawing.Point(127, 86);
-            this.txtRepeatInterval.Name = "txtRepeatInterval";
-            this.txtRepeatInterval.Size = new System.Drawing.Size(95, 20);
-            this.txtRepeatInterval.TabIndex = 7;
-            this.txtRepeatInterval.Text = "500";
-            this.txtRepeatInterval.Validating += new System.ComponentModel.CancelEventHandler(this.txtRepeatInterval_Validating);
-            // 
-            // lblRepeatInterval
-            // 
-            this.lblRepeatInterval.AutoSize = true;
-            this.lblRepeatInterval.Location = new System.Drawing.Point(10, 89);
-            this.lblRepeatInterval.Name = "lblRepeatInterval";
-            this.lblRepeatInterval.Size = new System.Drawing.Size(111, 13);
-            this.lblRepeatInterval.TabIndex = 6;
-            this.lblRepeatInterval.Text = "Button repeat interval:";
             // 
             // SettingsForm
             // 
