@@ -103,7 +103,7 @@ namespace PS3BluMote
 
         private void cbSms_CheckedChanged(object sender, EventArgs e)
         {
-            keyboard.isSmsEnabled = cbSms.Checked;
+            if (keyboard != null) keyboard.isSmsEnabled = cbSms.Checked;
         }
 
         private void llblOpenFolder_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
