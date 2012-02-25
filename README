@@ -75,6 +75,21 @@ If you are still having issues continue with these steps:
 
 =====================
 
+FREQUENTLY ASKED QUESTIONS (FAQ)
+
+---> Can I get my PS3 Bluetooth Remote to launch programs with PS3BluMote?
+
+Yes, you can! You first need to assign a keyboard shortcut to that program in
+Windows; you can find instructions here: 
+
+http://windows.microsoft.com/en-GB/windows7/Create-keyboard-shortcuts-to-open-programs
+
+You then assign the same keyboard shortcut to a remote button in PS3BluMote 
+and everytime you press the button it will open the application.
+
+
+=====================
+
 COMPILING:
 
 You can obtain the source code from: https://github.com/Ben-Barron/PS3BluMote.
