@@ -88,6 +88,15 @@ You then assign the same keyboard shortcut to a remote button in PS3BluMote
 and everytime you press the button it will open the application.
 
 
+---> The hibernation feature is disabled, is there any way to save battery use?
+
+Many people have reported a program called Ps3RemoteSleep works to disconnect the
+remote. It is a program that you can assign a keyboard shortcut to (see the above
+question) and assign a button on your remote to execute it to disable the remote.
+
+Ps3RemoteSleep is available here: http://ps3remotesleep.codeplex.com/
+
+
 =====================
 
 COMPILING:
