@@ -22,6 +22,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 using System;
 using System.Collections.Generic;
 using System.Timers;
+//using System.Diagnostics;
 
 using HidLibrary;
 using WindowsAPI;
@@ -50,57 +51,62 @@ namespace PS3BluMote
         #region "Remote button codes"
         static byte[][] buttonCodes = 
         {
-	        new byte[] { 0, 0, 0, 22 },
-	        new byte[] { 0, 0, 0, 100 },
-	        new byte[] { 0, 0, 0, 101 },
-	        new byte[] { 0, 0, 0, 99 },
-	        new byte[] { 0, 0, 0, 15 },
-	        new byte[] { 0, 0, 0, 40 },
-	        new byte[] { 0, 0, 0, 0 },
-	        new byte[] { 0, 0, 0, 1 },
-	        new byte[] { 0, 0, 0, 2 },
-	        new byte[] { 0, 0, 0, 3 },
-	        new byte[] { 0, 0, 0, 4 },
-	        new byte[] { 0, 0, 0, 5 },
-	        new byte[] { 0, 0, 0, 6 },
-	        new byte[] { 0, 0, 0, 7 },
-	        new byte[] { 0, 0, 0, 8 },
-	        new byte[] { 0, 0, 0, 9 },
-	        new byte[] { 0, 0, 0, 128 },
-	        new byte[] { 0, 0, 0, 129 },
-	        new byte[] { 0, 0, 0, 130 },
-	        new byte[] { 0, 0, 0, 131 },
-	        new byte[] { 0, 0, 0, 112 },
-	        new byte[] { 0, 0, 0, 26 },
-	        new byte[] { 0, 0, 0, 64 },
-	        new byte[] { 0, 0, 0, 14 },
-	        new byte[] { 0, 16, 0, 92 },
-	        new byte[] { 0, 32, 0, 93 },
-	        new byte[] { 0, 128, 0, 95 },
-	        new byte[] { 0, 64, 0, 94 },
-	        new byte[] { 16, 0, 0, 84 },
-	        new byte[] { 64, 0, 0, 86 },
-	        new byte[] { 128, 0, 0, 87 },
-	        new byte[] { 32, 0, 0, 85 },
-	        new byte[] { 0, 0, 8, 11 },
-	        new byte[] { 0, 4, 0, 90 },
-	        new byte[] { 0, 1, 0, 88 },
-	        new byte[] { 2, 0, 0, 81 },
-	        new byte[] { 0, 8, 0, 91 },
-	        new byte[] { 0, 2, 0, 89 },
-	        new byte[] { 4, 0, 0, 82 },
-	        new byte[] { 0, 0, 1, 67 },
-	        new byte[] { 1, 0, 0, 80 },
-	        new byte[] { 8, 0, 0, 83 },
-	        new byte[] { 0, 0, 0, 50 },
-	        new byte[] { 0, 0, 0, 56 },
-	        new byte[] { 0, 0, 0, 57 },
-	        new byte[] { 0, 0, 0, 51 },
-	        new byte[] { 0, 0, 0, 52 },
-	        new byte[] { 0, 0, 0, 48 },
-	        new byte[] { 0, 0, 0, 49 },
-	        new byte[] { 0, 0, 0, 96 },
-	        new byte[] { 0, 0, 0, 97 },
+	        new byte[] { 0, 0, 0, 22 },     //Eject
+	        new byte[] { 0, 0, 0, 100 },    //Audio
+	        new byte[] { 0, 0, 0, 101 },    //Angle
+	        new byte[] { 0, 0, 0, 99 },     //Subtitle
+	        new byte[] { 0, 0, 0, 15 },     //Clear
+	        new byte[] { 0, 0, 0, 40 },     //Time
+	        new byte[] { 0, 0, 0, 0 },      //NUM_1
+	        new byte[] { 0, 0, 0, 1 },      //NUM_2
+	        new byte[] { 0, 0, 0, 2 },      //NUM_3
+	        new byte[] { 0, 0, 0, 3 },      //NUM_4
+	        new byte[] { 0, 0, 0, 4 },      //NUM_5
+	        new byte[] { 0, 0, 0, 5 },      //NUM_6
+	        new byte[] { 0, 0, 0, 6 },      //NUM_7
+	        new byte[] { 0, 0, 0, 7 },      //NUM_8
+	        new byte[] { 0, 0, 0, 8 },      //NUM_9
+	        new byte[] { 0, 0, 0, 9 },      //NUM_0
+	        new byte[] { 0, 0, 0, 128 },    //Blue
+	        new byte[] { 0, 0, 0, 129 },    //Red
+	        new byte[] { 0, 0, 0, 130 },    //Green
+	        new byte[] { 0, 0, 0, 131 },    //Yellow
+	        new byte[] { 0, 0, 0, 112 },    //Display
+	        new byte[] { 0, 0, 0, 26 },     //Top_Menu
+	        new byte[] { 0, 0, 0, 64 },     //PopUp_Menu
+	        new byte[] { 0, 0, 0, 14 },     //Return
+	        new byte[] { 0, 16, 0, 92 },    //Triangle
+	        new byte[] { 0, 32, 0, 93 },    //Circle
+	        new byte[] { 0, 128, 0, 95 },   //Square
+	        new byte[] { 0, 64, 0, 94 },    //Cross
+	        new byte[] { 16, 0, 0, 84 },    //Arrow_Up
+	        new byte[] { 64, 0, 0, 86 },    //Arrow_Down
+	        new byte[] { 128, 0, 0, 87 },   //Arrow_Left
+	        new byte[] { 32, 0, 0, 85 },    //Arrow_Right
+	        new byte[] { 0, 0, 8, 11 },     //Enter
+	        new byte[] { 0, 4, 0, 90 },     //L1
+	        new byte[] { 0, 1, 0, 88 },     //L2
+	        new byte[] { 2, 0, 0, 81 },     //L3
+	        new byte[] { 0, 8, 0, 91 },     //R1
+	        new byte[] { 0, 2, 0, 89 },     //R2
+	        new byte[] { 4, 0, 0, 82 },     //R3
+	        new byte[] { 0, 0, 1, 67 },     //Playstation
+	        new byte[] { 1, 0, 0, 80 },     //Select
+	        new byte[] { 8, 0, 0, 83 },     //Start
+	        new byte[] { 0, 0, 0, 50 },     //Play
+	        new byte[] { 0, 0, 0, 56 },     //Stop
+	        new byte[] { 0, 0, 0, 57 },     //Pause
+	        new byte[] { 0, 0, 0, 51 },     //Scan_Back
+	        new byte[] { 0, 0, 0, 52 },     //Scan_Forward
+	        new byte[] { 0, 0, 0, 48 },     //Prev
+	        new byte[] { 0, 0, 0, 49 },     //Next
+	        new byte[] { 0, 0, 0, 96 },     //Step_Back
+	        new byte[] { 0, 0, 0, 97 },     //Step_Forward
+            new byte[] { 0, 0, 0, 118 },    //instant back
+            new byte[] { 0, 0, 0, 117 },    //instant fwd
+            new byte[] { 0, 0, 0, 16 },     //channel up
+            new byte[] { 0, 0, 0, 17 },     //channel down
+            new byte[] { 0, 0, 0, 12 }      // "-/--" dash_slash_dash_dash
         };
         #endregion
 
@@ -147,6 +153,7 @@ namespace PS3BluMote
             if ((InData.Status == HidDeviceData.ReadStatus.Success) && (InData.Data[0] == 1))
             {
                 if (DebugLog.isLogging) DebugLog.write("Read button data: " + String.Join(",", InData.Data));
+                //Debug.Print("Read button data: " + String.Join(",", InData.Data));
 
                 if ((InData.Data[10] == 0) || (InData.Data[4] == 255)) // button released
                 {
@@ -158,7 +165,7 @@ namespace PS3BluMote
 
                     int i, j;
 
-                    for (j = 0; j < 51; j++)
+                    for (j = 0; j < 56; j++)
                     {
                         for (i = 0; i < 4; i++)
                         {
@@ -168,7 +175,7 @@ namespace PS3BluMote
                         if (i == 4) break;
                     }
 
-                    if (j != 51)
+                    if (j != 56)
                     {
                         lastButton = (Button)j;
                         isButtonDown = true;
@@ -321,7 +328,12 @@ namespace PS3BluMote
             Prev,
             Next,
             Step_Back,
-            Step_Forward
+            Step_Forward,
+            Instant_Back,
+            Instant_Forward,
+            Channel_Up,
+            Channel_Down,
+            dash_slash_dash_dash
         }
     }
 }
