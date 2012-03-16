@@ -97,6 +97,23 @@ question) and assign a button on your remote to execute it to disable the remote
 Ps3RemoteSleep is available here: http://ps3remotesleep.codeplex.com/
 
 
+---> Do other remotes work?
+
+The following remotes are known to work:
+   - Official Sony PS3 Bluetooth remote (old version).
+   - Official Sony PS3 Bluetooth remote (new version).
+   - SMK 3700
+   - Logitech Harmony (with PS3 Adapter).
+   
+To get these addition remotes (and any other PS3 Bluetooth remote) to work, you
+need to open the PS3BluMote settings and click on the "Settings" tab. Here you 
+change the remote VID (Vendor ID) and PID (Product ID) to match your remote. You
+can find these in the Device Manager (via Control Panel), however, there is also
+a list of VIDs/PIDs for the above remotes on the "Settings" tab page. If you find
+another remote that works with PS3BluMote, please let me know via the contact form
+here: Http://www.benbarron.com/contact 
+
+
 =====================
 
 COMPILING:
