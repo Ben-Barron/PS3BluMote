@@ -36,7 +36,7 @@ namespace PS3BluMote
         private readonly String SETTINGS_FILE = System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData) + "\\PS3BluMote\\settings.ini";
         private const String SETTINGS_VERSION = "2.0";
 
-        private ButtonMapping[] buttonMappings = new ButtonMapping[51];
+        private ButtonMapping[] buttonMappings = new ButtonMapping[56];
         private PS3Remote remote = null;
         private SendInputAPI.Keyboard keyboard = null;
         private System.Timers.Timer timerRepeat = null;
