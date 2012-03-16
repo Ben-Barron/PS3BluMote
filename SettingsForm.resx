@@ -350,6 +350,17 @@
         AACD/wAAh/8AAA==
 </value>
   </data>
+  <data name="lblRemoteCodes.Text" xml:space="preserve">
+    <value>Official Sony PS3 Blutetooth remote (all versions):
+    PID: 0x0306      VID: 0x054c
+
+SMK Blu-Link VP3700:
+    PID: 0x0306      VID: 0x0609
+
+Logitech Harmony (with PS3 Adapter):
+    PID: 0x0306      VID: 0x046d
+    </value>
+  </data>
   <metadata name="toolTipAdvanced.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>262, 17</value>
   </metadata>

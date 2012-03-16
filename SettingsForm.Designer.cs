@@ -234,7 +234,7 @@ namespace PS3BluMote
             // 
             // txtRepeatInterval
             // 
-            this.txtRepeatInterval.Location = new System.Drawing.Point(127, 86);
+            this.txtRepeatInterval.Location = new System.Drawing.Point(160, 86);
             this.txtRepeatInterval.Name = "txtRepeatInterval";
             this.txtRepeatInterval.Size = new System.Drawing.Size(95, 20);
             this.txtRepeatInterval.TabIndex = 7;
@@ -246,18 +246,18 @@ namespace PS3BluMote
             this.lblRepeatInterval.AutoSize = true;
             this.lblRepeatInterval.Location = new System.Drawing.Point(10, 89);
             this.lblRepeatInterval.Name = "lblRepeatInterval";
-            this.lblRepeatInterval.Size = new System.Drawing.Size(111, 13);
+            this.lblRepeatInterval.Size = new System.Drawing.Size(144, 13);
             this.lblRepeatInterval.TabIndex = 6;
-            this.lblRepeatInterval.Text = "Button repeat interval:";
+            this.lblRepeatInterval.Text = "Button repeat interval (in ms):";
             // 
             // lblCopyright
             // 
             this.lblCopyright.AutoSize = true;
-            this.lblCopyright.Location = new System.Drawing.Point(10, 298);
+            this.lblCopyright.Location = new System.Drawing.Point(10, 353);
             this.lblCopyright.Name = "lblCopyright";
             this.lblCopyright.Size = new System.Drawing.Size(149, 26);
             this.lblCopyright.TabIndex = 5;
-            this.lblCopyright.Text = "PS3BluMote v2.02.\r\nCopyright © Ben Barron 2012.";
+            this.lblCopyright.Text = "PS3BluMote v2.03.\r\nCopyright © Ben Barron 2012.";
             // 
             // llblOpenFolder
             // 
@@ -293,7 +293,7 @@ namespace PS3BluMote
             this.gbAdvanced.Location = new System.Drawing.Point(9, 127);
             this.gbAdvanced.Name = "gbAdvanced";
             this.gbAdvanced.Padding = new System.Windows.Forms.Padding(6);
-            this.gbAdvanced.Size = new System.Drawing.Size(203, 159);
+            this.gbAdvanced.Size = new System.Drawing.Size(258, 213);
             this.gbAdvanced.TabIndex = 2;
             this.gbAdvanced.TabStop = false;
             this.gbAdvanced.Text = "Advanced";
@@ -302,12 +302,11 @@ namespace PS3BluMote
             // lblRemoteCodes
             // 
             this.lblRemoteCodes.AutoSize = true;
-            this.lblRemoteCodes.Location = new System.Drawing.Point(9, 83);
+            this.lblRemoteCodes.Location = new System.Drawing.Point(9, 95);
             this.lblRemoteCodes.Name = "lblRemoteCodes";
-            this.lblRemoteCodes.Size = new System.Drawing.Size(155, 65);
+            this.lblRemoteCodes.Size = new System.Drawing.Size(239, 117);
             this.lblRemoteCodes.TabIndex = 3;
-            this.lblRemoteCodes.Text = "--- Known remote codes ---\r\n\r\nSMK Blu-Link VP3700\r\n    PID: 0x0306      VID: 0x06" +
-                "09\r\n    ";
+            this.lblRemoteCodes.Text = resources.GetString("lblRemoteCodes.Text");
             // 
             // txtVendorId
             // 
