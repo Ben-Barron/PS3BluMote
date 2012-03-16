@@ -1,3 +1,13 @@
+==  PS3BluMote v2.03  ==  16/03/2012 - 15:39  ==  Ben Barron  ==
+
+   * Version 2.03 officially released.
+   * Added support for the new official Sony PS3 Remote (model: CECH-ZRC1U).
+   * Added Logitech Harmony VID/PID to the advanced setting on the settings
+     page.
+   * Changed some of the labels for input in the settings section.
+	 
+	 
+	 
 ==  PS3BluMote v2.02  ==  25/02/2012 - 21:09  ==  Ben Barron  ==
 
    * Version 2.02 officially released. Fixed issue loading settings file that
