@@ -26,6 +26,8 @@ using System.Security.Principal;
 using System.Windows.Forms;
 using System.Xml;
 
+using Microsoft.Win32;
+
 using WindowsAPI;
 
 namespace PS3BluMote
@@ -106,6 +108,19 @@ namespace PS3BluMote
             if (keyboard != null) keyboard.isSmsEnabled = cbSms.Checked;
         }
 
+        private void cbStartup_CheckedChanged(object sender, EventArgs e)
+        {
+            RegistryKey Key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Run", true);
+
+            if (cbStartup.Checked)
+                Key.SetValue("PS3BluMote", System.Reflection.Assembly.GetEntryAssembly().Location);
+            else
+            {
+                if (Key.GetValue("PS3BlueMote") != null)
+                    Key.DeleteValue("PS3BluMote");
+            }
+        }
+
         private void llblOpenFolder_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             System.Diagnostics.Process prc = new System.Diagnostics.Process();
@@ -134,6 +149,10 @@ namespace PS3BluMote
                         cbHibernation.Checked = (rssNode.SelectSingleNode("settings/hibernation").InnerText.ToLower() == "true") ? true : false;
                         txtVendorId.Text = rssNode.SelectSingleNode("settings/vendorid").InnerText;
                         txtProductId.Text = rssNode.SelectSingleNode("settings/productid").InnerText;
+
+                        RegistryKey Key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Run", true);
+                        if (Key.GetValue("PS3BluMote") != null && Key.GetValue("PS3BluMote").Equals(System.Reflection.Assembly.GetEntryAssembly().Location))
+                            cbStartup.Checked = true;
 
                         try
                         {
