@@ -78,6 +78,7 @@ namespace PS3BluMote
             this.cbHibernation = new System.Windows.Forms.CheckBox();
             this.cbSms = new System.Windows.Forms.CheckBox();
             this.toolTipAdvanced = new System.Windows.Forms.ToolTip(this.components);
+            this.cbStartup = new System.Windows.Forms.CheckBox();
             this.menuNotifyIcon.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.tabMappings.SuspendLayout();
@@ -216,6 +217,7 @@ namespace PS3BluMote
             // 
             // tabSettings
             // 
+            this.tabSettings.Controls.Add(this.cbStartup);
             this.tabSettings.Controls.Add(this.txtRepeatInterval);
             this.tabSettings.Controls.Add(this.lblRepeatInterval);
             this.tabSettings.Controls.Add(this.lblCopyright);
@@ -234,7 +236,7 @@ namespace PS3BluMote
             // 
             // txtRepeatInterval
             // 
-            this.txtRepeatInterval.Location = new System.Drawing.Point(160, 86);
+            this.txtRepeatInterval.Location = new System.Drawing.Point(160, 108);
             this.txtRepeatInterval.Name = "txtRepeatInterval";
             this.txtRepeatInterval.Size = new System.Drawing.Size(95, 20);
             this.txtRepeatInterval.TabIndex = 7;
@@ -244,7 +246,7 @@ namespace PS3BluMote
             // lblRepeatInterval
             // 
             this.lblRepeatInterval.AutoSize = true;
-            this.lblRepeatInterval.Location = new System.Drawing.Point(10, 89);
+            this.lblRepeatInterval.Location = new System.Drawing.Point(10, 111);
             this.lblRepeatInterval.Name = "lblRepeatInterval";
             this.lblRepeatInterval.Size = new System.Drawing.Size(144, 13);
             this.lblRepeatInterval.TabIndex = 6;
@@ -253,7 +255,7 @@ namespace PS3BluMote
             // lblCopyright
             // 
             this.lblCopyright.AutoSize = true;
-            this.lblCopyright.Location = new System.Drawing.Point(10, 353);
+            this.lblCopyright.Location = new System.Drawing.Point(13, 368);
             this.lblCopyright.Name = "lblCopyright";
             this.lblCopyright.Size = new System.Drawing.Size(149, 26);
             this.lblCopyright.TabIndex = 5;
@@ -262,7 +264,7 @@ namespace PS3BluMote
             // llblOpenFolder
             // 
             this.llblOpenFolder.AutoSize = true;
-            this.llblOpenFolder.Location = new System.Drawing.Point(190, 60);
+            this.llblOpenFolder.Location = new System.Drawing.Point(190, 82);
             this.llblOpenFolder.Name = "llblOpenFolder";
             this.llblOpenFolder.Size = new System.Drawing.Size(120, 13);
             this.llblOpenFolder.TabIndex = 4;
@@ -275,7 +277,7 @@ namespace PS3BluMote
             // cbDebugMode
             // 
             this.cbDebugMode.AutoSize = true;
-            this.cbDebugMode.Location = new System.Drawing.Point(13, 59);
+            this.cbDebugMode.Location = new System.Drawing.Point(13, 81);
             this.cbDebugMode.Name = "cbDebugMode";
             this.cbDebugMode.Size = new System.Drawing.Size(171, 17);
             this.cbDebugMode.TabIndex = 3;
@@ -290,7 +292,7 @@ namespace PS3BluMote
             this.gbAdvanced.Controls.Add(this.txtProductId);
             this.gbAdvanced.Controls.Add(this.lblVendorId);
             this.gbAdvanced.Controls.Add(this.lblProductId);
-            this.gbAdvanced.Location = new System.Drawing.Point(9, 127);
+            this.gbAdvanced.Location = new System.Drawing.Point(13, 134);
             this.gbAdvanced.Name = "gbAdvanced";
             this.gbAdvanced.Padding = new System.Windows.Forms.Padding(6);
             this.gbAdvanced.Size = new System.Drawing.Size(258, 213);
@@ -348,7 +350,7 @@ namespace PS3BluMote
             // 
             this.cbHibernation.AutoSize = true;
             this.cbHibernation.Enabled = false;
-            this.cbHibernation.Location = new System.Drawing.Point(13, 36);
+            this.cbHibernation.Location = new System.Drawing.Point(13, 58);
             this.cbHibernation.Name = "cbHibernation";
             this.cbHibernation.Size = new System.Drawing.Size(529, 17);
             this.cbHibernation.TabIndex = 1;
@@ -367,6 +369,17 @@ namespace PS3BluMote
             this.cbSms.Text = "SMS text input";
             this.cbSms.UseVisualStyleBackColor = true;
             this.cbSms.CheckedChanged += new System.EventHandler(this.cbSms_CheckedChanged);
+            // 
+            // cbStartup
+            // 
+            this.cbStartup.AutoSize = true;
+            this.cbStartup.Location = new System.Drawing.Point(13, 35);
+            this.cbStartup.Name = "cbStartup";
+            this.cbStartup.Size = new System.Drawing.Size(95, 17);
+            this.cbStartup.TabIndex = 8;
+            this.cbStartup.Text = "Run at Startup";
+            this.cbStartup.UseVisualStyleBackColor = true;
+            this.cbStartup.CheckedChanged += new System.EventHandler(this.cbStartup_CheckedChanged);
             // 
             // SettingsForm
             // 
@@ -425,5 +438,6 @@ namespace PS3BluMote
         private System.Windows.Forms.Label lblCopyright;
         private System.Windows.Forms.TextBox txtRepeatInterval;
         private System.Windows.Forms.Label lblRepeatInterval;
+        private System.Windows.Forms.CheckBox cbStartup;
     }
 }
