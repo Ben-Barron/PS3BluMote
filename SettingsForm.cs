@@ -257,7 +257,10 @@ namespace PS3BluMote
 
         private void notifyIcon_DoubleClick(object sender, EventArgs e)
         {
-            this.Show();
+            if (this.Visible)
+                this.Hide();
+            else
+                this.Show();
         }
 
         private void remote_BatteryLifeChanged(object sender, EventArgs e)
