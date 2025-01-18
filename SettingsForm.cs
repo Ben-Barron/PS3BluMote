@@ -70,7 +70,7 @@ namespace PS3BluMote
             }
 
             timerRepeat = new System.Timers.Timer();
-            timerRepeat.Interval = int.Parse(txtRepeatInterval.Text);
+            timerRepeat.Interval = int.Parse(txtRepeatDelay.Text);
             timerRepeat.Elapsed += new System.Timers.ElapsedEventHandler(timerRepeat_Elapsed);
 
             try
@@ -298,6 +298,7 @@ namespace PS3BluMote
                 if (DebugLog.isLogging) DebugLog.write("Keys repeat send off: { " + String.Join(",", keyboard.lastKeysDown.ToArray()) + " }");
 
                 timerRepeat.Enabled = false;
+                timerRepeat.Interval = int.Parse(txtRepeatDelay.Text);
                 return;
             }
 
@@ -385,6 +386,7 @@ namespace PS3BluMote
         {
             keyboard.sendKeysDown(keyboard.lastKeysDown);
             keyboard.releaseLastKeys();
+            timerRepeat.Interval = int.Parse(txtRepeatInterval.Text);
         }
 
         private void txtProductId_Validating(object sender, System.ComponentModel.CancelEventArgs e)

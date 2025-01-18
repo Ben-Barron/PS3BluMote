@@ -64,6 +64,8 @@ namespace PS3BluMote
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lvKeys = new System.Windows.Forms.ListView();
             this.tabSettings = new System.Windows.Forms.TabPage();
+            this.txtRepeatDelay = new System.Windows.Forms.TextBox();
+            this.lblRepeatDelay = new System.Windows.Forms.Label();
             this.txtRepeatInterval = new System.Windows.Forms.TextBox();
             this.lblRepeatInterval = new System.Windows.Forms.Label();
             this.lblCopyright = new System.Windows.Forms.Label();
@@ -127,7 +129,7 @@ namespace PS3BluMote
             this.tabControl.Location = new System.Drawing.Point(6, 6);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(612, 430);
+            this.tabControl.Size = new System.Drawing.Size(787, 660);
             this.tabControl.TabIndex = 1;
             // 
             // tabMappings
@@ -136,7 +138,7 @@ namespace PS3BluMote
             this.tabMappings.Location = new System.Drawing.Point(4, 22);
             this.tabMappings.Name = "tabMappings";
             this.tabMappings.Padding = new System.Windows.Forms.Padding(3);
-            this.tabMappings.Size = new System.Drawing.Size(604, 404);
+            this.tabMappings.Size = new System.Drawing.Size(779, 634);
             this.tabMappings.TabIndex = 0;
             this.tabMappings.Text = "Mappings";
             this.tabMappings.UseVisualStyleBackColor = true;
@@ -154,8 +156,8 @@ namespace PS3BluMote
             // splitContainer.Panel2
             // 
             this.splitContainer.Panel2.Controls.Add(this.lvKeys);
-            this.splitContainer.Size = new System.Drawing.Size(598, 398);
-            this.splitContainer.SplitterDistance = 331;
+            this.splitContainer.Size = new System.Drawing.Size(773, 628);
+            this.splitContainer.SplitterDistance = 321;
             this.splitContainer.SplitterWidth = 6;
             this.splitContainer.TabIndex = 2;
             // 
@@ -175,7 +177,7 @@ namespace PS3BluMote
             this.lvButtons.MultiSelect = false;
             this.lvButtons.Name = "lvButtons";
             this.lvButtons.ShowGroups = false;
-            this.lvButtons.Size = new System.Drawing.Size(331, 398);
+            this.lvButtons.Size = new System.Drawing.Size(321, 628);
             this.lvButtons.TabIndex = 0;
             this.lvButtons.UseCompatibleStateImageBehavior = false;
             this.lvButtons.View = System.Windows.Forms.View.Details;
@@ -208,7 +210,7 @@ namespace PS3BluMote
             this.lvKeys.MultiSelect = false;
             this.lvKeys.Name = "lvKeys";
             this.lvKeys.ShowGroups = false;
-            this.lvKeys.Size = new System.Drawing.Size(261, 398);
+            this.lvKeys.Size = new System.Drawing.Size(446, 628);
             this.lvKeys.TabIndex = 1;
             this.lvKeys.UseCompatibleStateImageBehavior = false;
             this.lvKeys.View = System.Windows.Forms.View.List;
@@ -216,6 +218,8 @@ namespace PS3BluMote
             // 
             // tabSettings
             // 
+            this.tabSettings.Controls.Add(this.txtRepeatDelay);
+            this.tabSettings.Controls.Add(this.lblRepeatDelay);
             this.tabSettings.Controls.Add(this.txtRepeatInterval);
             this.tabSettings.Controls.Add(this.lblRepeatInterval);
             this.tabSettings.Controls.Add(this.lblCopyright);
@@ -227,24 +231,42 @@ namespace PS3BluMote
             this.tabSettings.Location = new System.Drawing.Point(4, 22);
             this.tabSettings.Name = "tabSettings";
             this.tabSettings.Padding = new System.Windows.Forms.Padding(10);
-            this.tabSettings.Size = new System.Drawing.Size(604, 404);
+            this.tabSettings.Size = new System.Drawing.Size(779, 634);
             this.tabSettings.TabIndex = 1;
             this.tabSettings.Text = "Settings";
             this.tabSettings.UseVisualStyleBackColor = true;
             // 
+            // txtRepeatDelay
+            // 
+            this.txtRepeatDelay.Location = new System.Drawing.Point(247, 115);
+            this.txtRepeatDelay.Name = "txtRepeatDelay";
+            this.txtRepeatDelay.Size = new System.Drawing.Size(95, 20);
+            this.txtRepeatDelay.TabIndex = 9;
+            this.txtRepeatDelay.Text = "500";
+            this.txtRepeatDelay.Validating += new System.ComponentModel.CancelEventHandler(this.txtRepeatInterval_Validating);
+            // 
+            // lblRepeatDelay
+            // 
+            this.lblRepeatDelay.AutoSize = true;
+            this.lblRepeatDelay.Location = new System.Drawing.Point(97, 118);
+            this.lblRepeatDelay.Name = "lblRepeatDelay";
+            this.lblRepeatDelay.Size = new System.Drawing.Size(135, 13);
+            this.lblRepeatDelay.TabIndex = 8;
+            this.lblRepeatDelay.Text = "Button repeat delay (in ms):";
+            // 
             // txtRepeatInterval
             // 
-            this.txtRepeatInterval.Location = new System.Drawing.Point(160, 86);
+            this.txtRepeatInterval.Location = new System.Drawing.Point(246, 150);
             this.txtRepeatInterval.Name = "txtRepeatInterval";
             this.txtRepeatInterval.Size = new System.Drawing.Size(95, 20);
             this.txtRepeatInterval.TabIndex = 7;
-            this.txtRepeatInterval.Text = "500";
+            this.txtRepeatInterval.Text = "80";
             this.txtRepeatInterval.Validating += new System.ComponentModel.CancelEventHandler(this.txtRepeatInterval_Validating);
             // 
             // lblRepeatInterval
             // 
             this.lblRepeatInterval.AutoSize = true;
-            this.lblRepeatInterval.Location = new System.Drawing.Point(10, 89);
+            this.lblRepeatInterval.Location = new System.Drawing.Point(96, 153);
             this.lblRepeatInterval.Name = "lblRepeatInterval";
             this.lblRepeatInterval.Size = new System.Drawing.Size(144, 13);
             this.lblRepeatInterval.TabIndex = 6;
@@ -253,11 +275,11 @@ namespace PS3BluMote
             // lblCopyright
             // 
             this.lblCopyright.AutoSize = true;
-            this.lblCopyright.Location = new System.Drawing.Point(10, 353);
+            this.lblCopyright.Location = new System.Drawing.Point(88, 417);
             this.lblCopyright.Name = "lblCopyright";
-            this.lblCopyright.Size = new System.Drawing.Size(149, 26);
+            this.lblCopyright.Size = new System.Drawing.Size(154, 26);
             this.lblCopyright.TabIndex = 5;
-            this.lblCopyright.Text = "PS3BluMote v2.03.\r\nCopyright © Ben Barron 2012.";
+            this.lblCopyright.Text = "PS3BluMote v2.03+ (midenok).\r\nCopyright © Ben Barron 2012.";
             // 
             // llblOpenFolder
             // 
@@ -290,7 +312,7 @@ namespace PS3BluMote
             this.gbAdvanced.Controls.Add(this.txtProductId);
             this.gbAdvanced.Controls.Add(this.lblVendorId);
             this.gbAdvanced.Controls.Add(this.lblProductId);
-            this.gbAdvanced.Location = new System.Drawing.Point(9, 127);
+            this.gbAdvanced.Location = new System.Drawing.Point(87, 191);
             this.gbAdvanced.Name = "gbAdvanced";
             this.gbAdvanced.Padding = new System.Windows.Forms.Padding(6);
             this.gbAdvanced.Size = new System.Drawing.Size(258, 213);
@@ -372,7 +394,7 @@ namespace PS3BluMote
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(624, 442);
+            this.ClientSize = new System.Drawing.Size(799, 672);
             this.Controls.Add(this.tabControl);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -425,5 +447,7 @@ namespace PS3BluMote
         private System.Windows.Forms.Label lblCopyright;
         private System.Windows.Forms.TextBox txtRepeatInterval;
         private System.Windows.Forms.Label lblRepeatInterval;
+        private System.Windows.Forms.TextBox txtRepeatDelay;
+        private System.Windows.Forms.Label lblRepeatDelay;
     }
 }
